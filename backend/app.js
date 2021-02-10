@@ -1,20 +1,26 @@
 require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql');
-
-
-
-//firing up the server
+// const User = require("./models/user");
+const homeRoutes = require('./routes/home');
 const app = express();
 const port = 3000 || process.env.PORT;
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+
+// using static files and other stuffs
+app.use('/public', express.static('public'));
+app.set("view engine", 'ejs');
+
+// using routes
+app.use("/", homeRoutes);
+
+
+//firing up the server
+app.listen(port, () => {
+  console.log('app listening on port:${port}')
 })
 
-app.listen(port, () => {
-  console.log(`app listening on port:${port}`)
-})
+
 
 //connecting to the database
 var con = mysql.createConnection({
@@ -22,7 +28,8 @@ var con = mysql.createConnection({
   host: process.env.HOST,
   user: process.env.USER,
   password: process.env.PASSWORD,
-database: process.env.DATABASE
+database: process.env.DATABASE,
+port: 3306
 
 });
 
