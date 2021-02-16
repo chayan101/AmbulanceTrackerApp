@@ -2,19 +2,20 @@ var express = require("express");
 var router = express.Router();
 
 
-router.get('/home', (req, res) => {
-  res.render('homepage');
+router.get('/login', (req, res) => {
+  res.render('login');
 })
 
-router.get('/driver', (req, res) => {
+router.post('/driver', (req, res) => {
+	// console.log(req);
   res.render('driver');
 })
 
-router.get('/student', (req, res) => {
+router.post('/student', (req, res) => {
   res.render('student');
 })
 
-router.get('/auth', (req, res) => {
+router.post('/auth', (req, res) => {
   res.render('auth');
 })
 
