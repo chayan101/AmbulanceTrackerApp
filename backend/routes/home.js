@@ -1,22 +1,19 @@
 var express = require("express");
 var router = express.Router();
+const { check, validationResult} = require("express-validator");
+const {dlogin, slogin, alogin} = require("../controllers/home");
 
 
-router.get('/login', (req, res) => {
-  res.render('login');
+// var sql = process.env.SELECT;
+
+router.get("/login", (req, res) => {  
+  res.render("login");
 })
 
-router.post('/driver', (req, res) => {
-	// console.log(req);
-  res.render('driver');
-})
+router.post("/driver",dlogin);
 
-router.post('/student', (req, res) => {
-  res.render('student');
-})
+router.post("/student",slogin);
 
-router.post('/auth', (req, res) => {
-  res.render('auth');
-})
+router.post("/auth",alogin);
 
 module.exports = router;
