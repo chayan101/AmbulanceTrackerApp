@@ -1,7 +1,12 @@
 require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql');
-const homeRoutes = require('./routes/home');
+const cookie_parser = require("cookie-parser");
+const authRoutes = require('./routes/auth');
+const studentRoutes = require('./routes/student');
+const driverRoutes = require('./routes/driver');
+const loginRoutes = require('./routes/login');
+
 var bodyParser = require("body-parser");
 var urlencodedparser = bodyParser.urlencoded({extended: false});
 const app = express();
@@ -13,16 +18,28 @@ const port = 3000 || process.env.PORT;
 app.use('/public', express.static('public'));
 app.set("view engine", 'ejs');
 app.use(bodyParser.urlencoded({extended:false}))
-// using routes
+app.use(cookie_parser());
 
-app.use("/", homeRoutes);
+// using routes
+app.use("/auth", authRoutes);
+app.use("/student", studentRoutes);
+app.use("/driver", driverRoutes);
+app.use("/login", loginRoutes);
+
 
 //firing up the server
 app.listen(port, () => {
   console.log('app listening on port: ' + port)
 })
 
-var select = process.env.SELECT;
+
+
+
+
+
+
+
+// var select = process.env.SELECT;
 
 
 //connecting to the database
