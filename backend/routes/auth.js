@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const { check, validationResult} = require("express-validator");
-const {alogin} = require("../controllers/auth");
+const {alogin, register, datainsert} = require("../controllers/auth");
 
 
 // var sql = process.env.SELECT;
@@ -12,5 +12,15 @@ const {alogin} = require("../controllers/auth");
 // })
 
 router.get("/",alogin);
+router.get("/register",register);
+router.post("/register",datainsert);
 
+router.get("/logout",function(req,res){
+	// req.cookies.username = null;
+	// req.cookies.role = null;
+
+	res.clearCookie('username');
+	res.clearCookie('role');
+	res.redirect("/login");
+});
 module.exports = router;

@@ -13,4 +13,13 @@ const {dlogin} = require("../controllers/driver");
 
 router.get("/",dlogin);
 
+router.get("/logout",function(req,res){
+	// req.cookies.username = null;
+	// req.cookies.role = null;
+
+	res.clearCookie('username');
+	res.clearCookie('role');
+	res.redirect("/login");
+});
+
 module.exports = router;

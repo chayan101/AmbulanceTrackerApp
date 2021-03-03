@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RegisterStudent</title>
+<!-- Include jQuery Library and File Here -->
+<script type="text/javascript" src="../public/js/login.js"></script>
+<!-- Include CSS File Here -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+        <!-- bootstrap theme -->
+        <link href="../public/css/bootstrap-theme.css" rel="stylesheet">
+        <!--external css-->
+        <!-- font icon -->
+        <link href="../public/css/elegant-icons-style.css" rel="stylesheet"/>
+        <link href="../public/css/font-awesome.css" rel="stylesheet"/>
+        <!-- Custom styles -->
+        <link href="../public/css/style.css" rel="stylesheet">
+        <link href="../public/css/style-responsive.css" rel="stylesheet"/>
+    </head>
+</head>
+<body class="login-img3-body">
+<div class="container">
+
+<!-- <h2>Dynamically Change Form Action Using Javascript</h2> -->
+
+    <form id="form_id" class="login-form" method="post" name="myform" action="/auth/register">
+      <div class="login-wrap">
+        <h2>Register Students</h2>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon_profile"></i></span>
+          <input type="text" class="form-control" name="rollnumber" id="rollnumber" placeholder="rollnumber" />
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon_profile"></i></span>
+          <input type="text" class="form-control" name="fname" id="fname" placeholder="fname" />
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon_profile"></i></span>
+          <input type="text" class="form-control" name="lname" id="lname" placeholder="lname" />
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon_profile"></i></span>
+          <input type="text" class="form-control" name="hostel" id="hostel" placeholder="hostel" />
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+          <input type="password" class="form-control" name="password" id="password" placeholder="Password" />
+        </div>
+
+
+
+        <button class="btn btn-primary btn-lg btn-block" type="Submit" value="Submit"> Submit</button>
+
+        <!-- <button class="btn btn-primary btn-lg btn-block" type="reset" class="cancelbtn">Clear</button> -->
+
+      </div>
+    </form>
+
+</div>
+</body>
+</html>

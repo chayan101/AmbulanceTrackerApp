@@ -36,3 +36,21 @@ exports.alogin = (req,res) =>{
 	    });
   	}
 }
+
+exports.register = (req,res) =>{
+	res.render("register");
+}
+
+exports.datainsert = (req,res) =>{
+	var sql = "INSERT INTO student(rollnumber, fname, lname, password, hostel) VALUES (" + req.body.rollnumber +",'" + req.body.fname + "','" + req.body.lname + "','" +  req.body.password + "','" + req.body.hostel + "')";
+  	con.query(sql, function (err, result, fields)
+  	{
+  		if (err){
+  			throw err;
+  		}
+  		console.log("1 record inserted");
+  		res.render("register");
+  	});
+  
+  	// res.render('auth');	
+}
