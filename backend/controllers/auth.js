@@ -42,7 +42,7 @@ exports.register = (req,res) =>{
 }
 
 exports.datainsert = (req,res) =>{
-	var sql = "INSERT INTO student(rollnumber, fname, lname, password, hostel) VALUES (" + req.body.rollnumber +",'" + req.body.fname + "','" + req.body.lname + "','" +  req.body.password + "','" + req.body.hostel + "')";
+	var sql = "INSERT INTO student(rollnumber, fname, lname, password, hostel) VALUES (" + req.body.rollno +",'" + req.body.fname + "','" + req.body.lname + "','" +  req.body.password + "','" + req.body.hostel + "')";
   	con.query(sql, function (err, result, fields)
   	{
   		if (err){
@@ -53,4 +53,12 @@ exports.datainsert = (req,res) =>{
   	});
   
   	// res.render('auth');	
+}
+
+exports.map = (req,res)=>{
+  res.render("map"); 
+}
+
+exports.records = (req,res)=>{
+  res.render("records"); 
 }

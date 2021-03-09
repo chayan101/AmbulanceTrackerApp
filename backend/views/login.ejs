@@ -1,61 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Login</title>
-<!-- Include jQuery Library and File Here -->
-<script type="text/javascript" src="../public/js/login.js"></script>
-<!-- Include CSS File Here -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../public/css/bootstrap.min.css" rel="stylesheet">
-        <!-- bootstrap theme -->
-        <link href="../public/css/bootstrap-theme.css" rel="stylesheet">
-        <!--external css-->
-        <!-- font icon -->
-        <link href="../public/css/elegant-icons-style.css" rel="stylesheet"/>
-        <link href="../public/css/font-awesome.css" rel="stylesheet"/>
-        <!-- Custom styles -->
-        <link href="../public/css/style.css" rel="stylesheet">
-        <link href="../public/css/style-responsive.css" rel="stylesheet"/>
-    </head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Login</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="../public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../public/css/sb-admin-2.min.css" rel="stylesheet">
+
 </head>
-<body class="login-img3-body">
-<div class="container">
 
-<!-- <h2>Dynamically Change Form Action Using Javascript</h2> -->
+<body class="bg-gradient-primary">
 
-    <form id="form_id" class="login-form" method="post" name="myform" action="/login">
-      <div class="login-wrap">
-        <p class="login-img"><i class="fa fa-ambulance" aria-hidden="true"></i></p>
-        <div class="input-group">
-          <span class="input-group-addon"><i class="icon_profile"></i></span>
-          <input type="text" class="form-control" name="email" id="email" placeholder="Username" required />
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Login</h1>
+                                    </div>
+
+                                    <form class="user" method="post" action="/login">
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" name="email" placeholder="Enter Email Address..." required>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <input type="password" class="form-control"
+                                                id="exampleInputPassword" name="password" placeholder="Password" required>
+                                        </div>
+                                        
+                                        <select id="form_action" class="form-control" name="role" required>
+                                              <option value="" disabled selected>Role</option>
+                                              <option value="authority">Authority</option>
+                                              <option value="driver">Driver</option>
+                                              <option value="student">Student</option>
+                                        </select>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label class="custom-control-label" for="customCheck">Remember
+                                                    Me</label>
+                                            </div>
+                                        </div>
+                                       <div class="mt-3">
+                                            <button type="submit" class="form-control btn btn-primary">Login</button>
+                                        </div>
+                                       
+                                        
+                                    </form>
+
+                                    <!-- <div class="text-center">
+                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
-        
 
-        <div class="input-group">
-          <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-          <input type="password" class="form-control" name="password" id="password" placeholder="Password" required />
-        </div>
-        
-        <select id="form_action" class="form-control" onChange="select_change()" name="role" required>
-          <option value="" disabled selected >Role</option>
-          <option value="authority">Authority</option>
-          <option value="driver">Driver</option>
-          <option value="student">Student</option>
-        </select>
+    </div>
 
-        <label class="checkbox">
-          <input type="checkbox" name="checkbox" value="remember-me"> Remember me
-          <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
-        </label>
+    <!-- Bootstrap core JavaScript-->
+    <script src="../public/vendor/jquery/jquery.min.js"></script>
+    <script src="../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-        <button class="btn btn-primary btn-lg btn-block" type="submit" value="Submit">Submit</button>
+    <!-- Core plugin JavaScript-->
+    <script src="../public/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- <button class="btn btn-primary btn-lg btn-block" type="reset" class="cancelbtn">Clear</button> -->
-        
-      </div>
-    </form>
+    <!-- Custom scripts for all pages-->
+    <script src="../public/js/sb-admin-2.min.js"></script>
 
-</div>
 </body>
+
 </html>
