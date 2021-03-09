@@ -22,7 +22,7 @@ exports.login = (req,res) =>{
 }
 
 exports.confirmlogin = (req,res) =>{
-//   console.log(req.body);
+  // console.log(req.body);
 
   var values = [req.body.email, req.body.password];
   var role = req.body.role;
