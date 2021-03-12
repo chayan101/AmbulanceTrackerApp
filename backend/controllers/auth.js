@@ -51,14 +51,25 @@ exports.datainsert = (req,res) =>{
   		console.log("1 record inserted");
   		res.render("register");
   	});
-  
-  	// res.render('auth');	
+
+  	// res.render('auth');
 }
 
 exports.map = (req,res)=>{
-  res.render("map"); 
+  res.render("map");
 }
 
 exports.records = (req,res)=>{
-  res.render("records"); 
+  var sql = "Select * from record";
+
+  con.query(sql, function (err, result, fields)
+  {
+    if (err){
+      throw err;
+    }
+    //Query result is array of RowDataPackets instead of array of objects
+    res.render("records", {result: JSON.parse(JSON.stringify(result))});//converting it into an array of objects
+
+  });
+
 }
