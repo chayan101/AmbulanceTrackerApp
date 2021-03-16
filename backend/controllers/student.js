@@ -44,7 +44,8 @@ exports.slogin = (req,res) =>{
 }
 exports.bookAmbulance = (req,res) => {
   //res.send(student);
-  if(availabe === true){
+
+  if(available === true){
     res.render("bookavail.ejs");//ambulance available
   }else{
     res.render("booklater.ejs");//not availabe
@@ -52,7 +53,8 @@ exports.bookAmbulance = (req,res) => {
 }
 
 exports.bookForLater = (req, res) => {
-  var sql = "INSERT INTO pendingRides VALUES("+req.body.rollnumber+ ", "+req.body.fname+", "+req.body.hostel+");";
+  console.log(req.body);
+  var sql = "INSERT INTO pendingRides VALUES("+req.body.rollnumber+ ",' "+req.body.fname+"','" +req.body.hostel+"');";
   con.query(sql,  function (err, result){
       if (err)
         throw err;
