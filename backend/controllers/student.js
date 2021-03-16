@@ -37,7 +37,7 @@ exports.slogin = (req,res) =>{
             rollnumber = req.body.rollnumber;
             hostel = req.body.hostel;
 	          // console.log(req.cookies.role === undefined);
-	          res.render("student");//student home page;
+	          res.render("student.ejs");//student home page;
 	        }
 	    });
   	}
@@ -45,9 +45,9 @@ exports.slogin = (req,res) =>{
 exports.bookAmbulance = (req,res) => {
   //res.send(student);
   if(availabe === true){
-    res.render("");//ambulance available
+    res.render("bookavail.ejs");//ambulance available
   }else{
-    res.render("");//not availabe
+    res.render("booklater.ejs");//not availabe
   }
 }
 
@@ -57,6 +57,6 @@ exports.bookForLater = (req, res) => {
       if (err)
         throw err;
 
-      res.render("");//succesfully booked for later page
+      res.render("booksuccess.ejs");//succesfully booked for later page
   });
 }

@@ -22,7 +22,8 @@ router.get("/logout",function(req,res){
 	res.redirect("/login");
 });
 
-router.get("/book", bookAmbulance);
-router.post("/bookForLater", bookForLater);
+router.get("/bookavail", bookAmbulance);
+router.post("/booklater", bookForLater);
+
 
 module.exports = router;
