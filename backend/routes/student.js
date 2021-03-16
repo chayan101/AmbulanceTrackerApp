@@ -1,13 +1,13 @@
 var express = require("express");
 var router = express.Router();
 const { check, validationResult} = require("express-validator");
-const {slogin} = require("../controllers/student");
+const {slogin, bookAmbulance, bookForLater} = require("../controllers/student");
 
 
 // var sql = process.env.SELECT;
 
 // router.get("/login", (req, res) => {
-// 	console.log(req);  
+// 	console.log(req);
 //   res.render("login");
 // })
 
@@ -21,5 +21,8 @@ router.get("/logout",function(req,res){
 	res.clearCookie('role');
 	res.redirect("/login");
 });
+
+router.get("/book", bookAmbulance);
+router.post("/bookForLater", bookForLater);
 
 module.exports = router;

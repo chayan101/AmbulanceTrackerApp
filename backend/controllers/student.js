@@ -1,7 +1,11 @@
 var mysql = require('mysql');
 const { check, validationResult } = require("express-validator");
+var available = require("../models/ambulance");
+
+
+
 var con = mysql.createConnection({
- 
+
   host: process.env.HOST,
   user: process.env.USER,
   password: process.env.PASSWORD,
@@ -29,10 +33,30 @@ exports.slogin = (req,res) =>{
 	        if(result.length === 0){
 	          res.redirect("/login");
 	        }else{
-	          console.log("hello");
+	          fname = req.body.fname;
+            rollnumber = req.body.rollnumber;
+            hostel = req.body.hostel;
 	          // console.log(req.cookies.role === undefined);
-	          res.render("student");
+	          res.render("student");//student home page;
 	        }
 	    });
   	}
+}
+exports.bookAmbulance = (req,res) => {
+  //res.send(student);
+  if(availabe === true){
+    res.render("");//ambulance available
+  }else{
+    res.render("");//not availabe
+  }
+}
+
+exports.bookForLater = (req, res) => {
+  var sql = "INSERT INTO pendingRides VALUES("+req.body.rollnumber+ ", "+req.body.fname+", "+req.body.hostel+");";
+  con.query(sql,  function (err, result){
+      if (err)
+        throw err;
+
+      res.render("");//succesfully booked for later page
+  });
 }
