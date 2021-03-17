@@ -1,3 +1,3 @@
-var available = false;
+var available = true;
 
 module.exports = available;
