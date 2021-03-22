@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- ../Partials/MetaTag/ -->
+    <%- include('../Partials/Metatag/adminMeta.ejs') %>
+    <title>Admin-Dashboard</title>
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+       <%- include('../Partials/Sidebar/adminSide.ejs') %>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+                <%- include('../Partials/Navbar/adminNav.ejs') %> 
+            </div>
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <%- include('../Partials/logoutModal.ejs') %>
+
+    <%- include('../Partials/Scripts/adminScripts.ejs') %>
+
+</body>
+
+</html>

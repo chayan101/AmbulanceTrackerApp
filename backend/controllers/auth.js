@@ -31,32 +31,32 @@ exports.alogin = (req,res) =>{
 	        }else{
 	          console.log("hello");
 	          // console.log(req.cookies.role === undefined);
-	          res.render("auth");
+	          res.render("../views/admin/auth");
 	        }
 	    });
   	}
 }
 
 exports.register = (req,res) =>{
-	res.render("register");
+	res.render("../views/admin/register");
 }
 
 exports.datainsert = (req,res) =>{
-	var sql = "INSERT INTO student(rollnumber, fname, lname, password, hostel) VALUES (" + req.body.rollno +",'" + req.body.fname + "','" + req.body.lname + "','" +  req.body.password + "','" + req.body.hostel + "')";
-  	con.query(sql, function (err, result, fields)
-  	{
-  		if (err){
-  			throw err;
-  		}
-  		console.log("1 record inserted");
-  		res.render("register");
-  	});
+	// var sql = "INSERT INTO student(rollnumber, fname, lname, password, hostel) VALUES (" + req.body.rollno +",'" + req.body.fname + "','" + req.body.lname + "','" +  req.body.password + "','" + req.body.hostel + "')";
+ //  	con.query(sql, function (err, result, fields)
+ //  	{
+ //  		if (err){
+ //  			throw err;
+ //  		}
+  		// console.log("1 record inserted");
+  		res.render("../views/admin/register");
+  	// });
 
   	// res.render('auth');
 }
 
 exports.map = (req,res)=>{
-  res.render("map");
+  res.render("../views/admin/map");
 }
 
 exports.records = (req,res)=>{
@@ -68,7 +68,7 @@ exports.records = (req,res)=>{
       throw err;
     }
     //Query result is array of RowDataPackets instead of array of objects
-    res.render("records", {result: JSON.parse(JSON.stringify(result))});//converting it into an array of objects
+    res.render("../views/admin/records", {result: JSON.parse(JSON.stringify(result))});//converting it into an array of objects
 
   });
 

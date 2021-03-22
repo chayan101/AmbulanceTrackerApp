@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- ../Partials/MetaTag/ -->
+    <%- include('../Partials/Metatag/adminMeta.ejs') %>
+
+    <title>Register</title>
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <%- include('../Partials/Sidebar/adminSide.ejs') %>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <%- include('../Partials/Navbar/adminNav.ejs') %> 
+                <div class="container mt-3">
+                    <form action="#" method="post">
+                        <p>Data file:</p>
+                        <div class="custom-file col-lg-12 mb-3">
+                          <input type="file" class="custom-file-input" id="customFile" name="filename">
+                          <label class="custom-file-label" for="customFile">Choose csv File</label>
+                        </div>
+
+                        <div class="mt-3">
+                          <button type="button" class="form-control btn btn-primary" onclick="printData()">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+                <br>
+                    <!-- <hr class="sidebar-divider my-0"> -->
+                
+                <div class="container" id="out">
+                    <div id="values">
+                        
+                    </div>
+                </div>
+
+                <div class="container" id="form">
+
+                    <!-- <div class="card o-hidden border-0 shadow-lg my-5"> -->
+                        <!-- <div class="card-body p-0"> -->
+                            <!-- Nested Row within Card Body -->
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Add a Student</h1>
+                            </div>
+                            <!-- <div class="row"> -->
+
+                                <!-- <div class="col-lg-5 d-none d-lg-block bg-register-image"></div> -->
+                                <div class="col-lg-12">
+                                    <div >
+
+                                        <form class="user" action="/auth/register" method="post">
+<!--                                             <div class="form-group row"> -->
+                                                 <hr class="sidebar-divider my-0">
+                                                <br>
+
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-user" id="fname"
+                                                        placeholder="First Name" name="fname">
+                                                </div>
+
+                                                <br>
+                                                <hr class="sidebar-divider my-0">
+                                                <br>
+
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control form-control-user" id="lnameame"
+                                                        placeholder="Last Name" name="lname">
+                                                </div>
+
+                                                <br>
+                                                <hr class="sidebar-divider my-0">
+                                                <br>
+
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-user" id="rollnumber"
+                                                    placeholder="Roll Number" name="rollno">
+                                                </div>
+
+
+                                                <br>
+                                                <hr class="sidebar-divider my-0">
+                                                <br>
+
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control form-control-user" id="hostel"
+                                                        placeholder="Hostel" name="hostel">
+                                                </div>
+
+                                                <br>
+                                                <hr class="sidebar-divider my-0">
+                                                <br>
+
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control form-control-user"
+                                                        id="password" placeholder="Password" name="password">
+                                                </div>
+
+                                                <br>
+                                                <hr class="sidebar-divider my-0">
+                                                <br>
+
+                                            <div class="mt-3">
+                                                <button type="submit" class="form-control btn btn-primary">Submit</button>
+                                            </div>
+                                        </form>
+                                        <hr>
+
+                                    </div>
+                                </div>
+                            <!-- </div> -->
+                        <!-- </div> -->
+                    <!-- </div> -->
+
+                <!-- </div> -->
+            </div>
+            <!-- End of Main Content -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+       <%- include('../Partials/logoutModal.ejs') %>
+
+    <%- include('../Partials/Scripts/adminScripts.ejs') %>
+ 
+
+</body>
+
+</html>
