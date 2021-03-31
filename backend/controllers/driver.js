@@ -36,3 +36,7 @@ exports.dlogin = (req,res) =>{
 	    });
   	}
 }
+
+exports.pending = (req,res) =>{
+	res.render("pending");
+}

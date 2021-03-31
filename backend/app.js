@@ -11,7 +11,7 @@ var bodyParser = require("body-parser");
 var urlencodedparser = bodyParser.urlencoded({extended: false});
 const app = express();
 
-const port = 3000 || process.env.PORT;
+const port = process.env.PORT;
 
 
 // using static files and other stuffs
@@ -28,7 +28,7 @@ app.use("/login", loginRoutes);
 
 
 //firing up the server
-app.listen(port, () => {
+app.listen(port,"0.0.0.0", () => {
   console.log('app listening on port: ' + port)
 })
 

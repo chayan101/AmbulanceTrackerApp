@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const { check, validationResult} = require("express-validator");
-const {dlogin} = require("../controllers/driver");
+const {dlogin, pending} = require("../controllers/driver");
 
 
 // var sql = process.env.SELECT;
@@ -12,6 +12,8 @@ const {dlogin} = require("../controllers/driver");
 // })
 
 router.get("/",dlogin);
+
+router.get("/pending",pending);
 
 router.get("/logout",function(req,res){
 	// req.cookies.username = null;
