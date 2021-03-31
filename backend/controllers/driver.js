@@ -36,3 +36,17 @@ exports.dlogin = (req,res) =>{
 	    });
   	}
 }
+
+exports.pending = (req, res) => {
+  var sql = "Select * from pendingrides";
+
+  con.query(sql, function (err, result, fields)
+  {
+    if (err){
+      throw err;
+    }
+    //Query result is array of RowDataPackets instead of array of objects
+    res.render("pending", {result: JSON.parse(JSON.stringify(result))});//converting it into an array of objects
+
+  });
+}
