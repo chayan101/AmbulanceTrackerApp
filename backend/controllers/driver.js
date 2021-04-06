@@ -1,5 +1,6 @@
 var mysql = require('mysql');
 const { check, validationResult } = require("express-validator");
+var avail = require("../models/ambulance");
 var con = mysql.createConnection({
  
   host: process.env.HOST,
@@ -18,6 +19,7 @@ con.connect(function(err) {
 });
 
 exports.dlogin = (req,res) =>{
+	// console.log(avail);
 	if(req.cookies.role === undefined && req.cookies.username === undefined){
     	res.redirect("/login")
   	}else{
@@ -29,12 +31,17 @@ exports.dlogin = (req,res) =>{
 	        if(result.length === 0){
 	          res.redirect("/login");
 	        }else{
-	          console.log("hello");
+	          // console.log("hello");
 	          // console.log(req.cookies.role === undefined);
-	          res.render("driver");
+	          res.render("driver",{value: avail});
 	        }
 	    });
   	}
+}
+
+exports.check = (req,res) =>{
+	// console.log("yoooo");
+	res.json({message: avail});
 }
 
 exports.pending = (req,res) =>{

@@ -21,6 +21,7 @@ exports.alogin = (req,res) =>{
 	if(req.cookies.role === undefined && req.cookies.username === undefined){
     	res.redirect("/login")
   	}else{
+      if(req.cookies.role === "authority"){
   		var sql  = process.env.USERAUTH;
 	    con.query(sql, [req.cookies.username], function (err, result){
 	        if (err)
@@ -31,14 +32,26 @@ exports.alogin = (req,res) =>{
 	        }else{
 	          console.log("hello");
 	          // console.log(req.cookies.role === undefined);
-	          res.render("../views/admin/auth");
+	          res.render("auth");
 	        }
 	    });
+      }else{
+        res.redirect("/login");
+      }
   	}
 }
 
 exports.register = (req,res) =>{
-	res.render("../views/admin/register");
+  if(req.cookies.role === undefined && req.cookies.username === undefined){
+      res.redirect("/login")
+    }else{
+      if(req.cookies.role === "authority"){
+        res.render("register");
+      }else{
+        res.redirect("/login");
+      } 
+    }
+	
 }
 
 exports.datainsert = (req,res) =>{
@@ -49,27 +62,42 @@ exports.datainsert = (req,res) =>{
  //  			throw err;
  //  		}
   		// console.log("1 record inserted");
-  		res.render("../views/admin/register");
+  		res.render("register");
   	// });
 
   	// res.render('auth');
 }
 
 exports.map = (req,res)=>{
-  res.render("../views/admin/map");
-}
+  if(req.cookies.role === undefined && req.cookies.username === undefined){
+      res.redirect("/login")
+    }else{
+      if(req.cookies.role === "authority"){
+        res.render("map");
+      }else{
+        res.redirect("/login");
+      } 
+    }
+  }
 
 exports.records = (req,res)=>{
-  var sql = "Select * from record";
+  if(req.cookies.role === undefined && req.cookies.username === undefined){
+      res.redirect("/login")
+    }else{
+      if(req.cookies.role === "authority"){
+        var sql = "Select * from record";
 
-  con.query(sql, function (err, result, fields)
-  {
-    if (err){
-      throw err;
-    }
-    //Query result is array of RowDataPackets instead of array of objects
-    res.render("../views/admin/records", {result: JSON.parse(JSON.stringify(result))});//converting it into an array of objects
+        con.query(sql, function (err, result, fields)
+        {
+          if (err){
+            throw err;
+          }
+          //Query result is array of RowDataPackets instead of array of objects
+          res.render("records", {result: JSON.parse(JSON.stringify(result))});//converting it into an array of objects
 
-  });
-
+        });
+      }else{
+        res.redirect("/login");
+      } 
+  }
 }

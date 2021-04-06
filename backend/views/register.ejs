@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
+<head>
 
-        <title>Student Portal- Book for later</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        <!-- Custom fonts for this template-->
-        <link href="../public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        <link
-            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-            rel="stylesheet">
+    <title>Register</title>
 
-        <!-- Custom styles for this template-->
-        <link href="../public/css/sb-admin-2.min.css" rel="stylesheet">
-    </head>
+    <!-- Custom fonts for this template-->
+    <link href="../public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../public/css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
 
 <body id="page-top">
 
@@ -29,48 +31,70 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/student">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/auth">
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-laptop-medical" aria-hidden="true"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Student</div>
+                <div class="sidebar-brand-text mx-3">Admin</div>
             </a>
-        <!-- </ul>     -->
 
-           <!-- Divider -->
-           <hr class="sidebar-divider my-0">
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
 
-           <!-- Nav Item - Dashboard -->
-           <!-- <li class="nav-item active">
-               <a class="nav-link" href="#">
-                   <i class="fas fa-fw fa-truck" aria-hidden="true"></i>
-                   <span>Book for Later</span></a>
-           </li> -->
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="/auth">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
 
-           <hr class="sidebar-divider my-0">
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
-           <li class="nav-item active">
-            <a class="nav-link" href="tel:+91 799 229 9306">
-                <i class="fas fa-fw fa-phone" aria-hidden="true"></i>
-                <span>Call the Driver</span></a>
+            <!-- Nav Item - Charts -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/auth/register">
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                    <span>Register</span></a>
+            </li>
 
-           </li>
-        <hr class="sidebar-divider d-none d-md-block">
+             <!-- Divider -->
+            <hr class="sidebar-divider">
 
-            <!-- <button type="button" class="call">
-                <a  href="tel:+91 799 229 9306">Call the Driver</a>
-            </button> -->
 
-            </ul>
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="/auth/map">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <span>Track</span></a>
+            </li>
 
-            <!-- Content Wrapper -->
+            <hr class="sidebar-divider">
+            <!-- Nav Item - Records -->
+            <li class="nav-item">
+                <a class="nav-link" href="/auth/records">
+                    <i class="fa fa-history" aria-hidden="true"></i>
+                    <span>Records</span></a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
             <div id="content">
 
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -84,6 +108,7 @@
                         </div>
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
+
 
 
 
@@ -104,16 +129,36 @@
                     </ul>
 
                 </nav>
-                <!-- End of Topbar -->
+                <div class="container mt-3">
+                    <form action="#" method="post">
+                        <p>Data file:</p>
+                        <div class="custom-file col-lg-12 mb-3">
+                          <input type="file" class="custom-file-input" id="customFile" name="filename">
+                          <label class="custom-file-label" for="customFile">Choose csv File</label>
+                        </div>
 
-                <div class="container">
+                        <div class="mt-3">
+                          <button type="button" class="form-control btn btn-primary" onclick="printData()">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+                <br>
+                    <!-- <hr class="sidebar-divider my-0"> -->
+                
+                <div class="container" id="out">
+                    <div id="values">
+                        
+                    </div>
+                </div>
+
+                <div class="container" id="form">
 
                     <!-- <div class="card o-hidden border-0 shadow-lg my-5"> -->
                         <!-- <div class="card-body p-0"> -->
                             <!-- Nested Row within Card Body -->
                             <div class="text-center">
-                              <p>NOTE: Ambulance currently unavailable in campus.</p>
-                                <h1 class="h4 text-gray-900 mb-4">Enter Patient's Details</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Add a Student</h1>
                             </div>
                             <!-- <div class="row"> -->
 
@@ -121,7 +166,7 @@
                                 <div class="col-lg-12">
                                     <div >
 
-                                        <form  class="user" action="/student/booklater" method="post">
+                                        <form class="user" action="/auth/register" method="post">
 <!--                                             <div class="form-group row"> -->
                                                  <hr class="sidebar-divider my-0">
                                                 <br>
@@ -135,9 +180,9 @@
                                                 <hr class="sidebar-divider my-0">
                                                 <br>
 
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control form-control-user" id="rollnumber"
-                                                    placeholder="Roll Number" name="rollnumber">
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control form-control-user" id="lnameame"
+                                                        placeholder="Last Name" name="lname">
                                                 </div>
 
                                                 <br>
@@ -145,6 +190,16 @@
                                                 <br>
 
                                                 <div class="form-group">
+                                                    <input type="text" class="form-control form-control-user" id="rollnumber"
+                                                    placeholder="Roll Number" name="rollno">
+                                                </div>
+
+
+                                                <br>
+                                                <hr class="sidebar-divider my-0">
+                                                <br>
+
+                                                <div class="col-sm-12">
                                                     <input type="text" class="form-control form-control-user" id="hostel"
                                                         placeholder="Hostel" name="hostel">
                                                 </div>
@@ -154,8 +209,8 @@
                                                 <br>
 
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control form-control-user" id="mobile"
-                                                        placeholder="mobile" name="mobile">
+                                                    <input type="password" class="form-control form-control-user"
+                                                        id="password" placeholder="Password" name="password">
                                                 </div>
 
                                                 <br>
@@ -163,26 +218,31 @@
                                                 <br>
 
                                             <div class="mt-3">
-                                                <button type="submit" class="form-control btn btn-primary">Book for later</button>
+                                                <button type="submit" class="form-control btn btn-primary">Submit</button>
                                             </div>
                                         </form>
-                                        </div>
-                                        </div>
+                                        <hr>
 
+                                    </div>
+                                </div>
+                            <!-- </div> -->
+                        <!-- </div> -->
+                    <!-- </div> -->
+
+                <!-- </div> -->
             </div>
             <!-- End of Main Content -->
 
         </div>
         <!-- End of Content Wrapper -->
-</div>
+
+    </div>
+    <!-- End of Page Wrapper -->
+
     <!-- Scroll to Top Button-->
-    <!-- <a class="scroll-to-top rounded" href="#page-top">
+    <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
-    </a> -->
-
-
-<!-- </div>     -->
-
+    </a>
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -220,7 +280,15 @@
     <!-- Page level custom scripts -->
     <script src="../public/js/demo/chart-area-demo.js"></script>
     <script src="../public/js/demo/chart-pie-demo.js"></script>
-
+     <script src="../public/js/register.js"></script>
+    <script>
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function() {
+          var fileName = $(this).val().split("\\").pop();
+          $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
 
 </body>
+
 </html>

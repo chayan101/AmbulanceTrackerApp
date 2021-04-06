@@ -25,40 +25,59 @@ exports.slogin = (req,res) =>{
   if(req.cookies.role === undefined && req.cookies.username === undefined){
     	res.redirect("/login")
   	}else{
-  		var sql  = process.env.USERSTUDENT;
-	    con.query(sql, [req.cookies.username], function (err, result){
-	        if (err)
-	          throw err;
+      if(req.cookies.role === "student"){
+    		var sql  = process.env.USERSTUDENT;
+  	    con.query(sql, [req.cookies.username], function (err, result){
+  	        if (err)
+  	          throw err;
 
-	        if(result.length === 0){
-	          res.redirect("/login");
-	        }else{
-	          fname = req.body.fname;
-            rollnumber = req.body.rollnumber;
-            hostel = req.body.hostel;
-	          // console.log(req.cookies.role === undefined);
-	          res.render("student.ejs");//student home page;
-	        }
-	    });
-  	}
+  	        if(result.length === 0){
+  	          res.redirect("/login");
+  	        }else{
+  	          fname = req.body.fname;
+              rollnumber = req.body.rollnumber;
+              hostel = req.body.hostel;
+  	          // console.log(req.cookies.role === undefined);
+  	          res.render("student.ejs");//student home page;
+  	        }
+  	    });
+    	}else{
+        res.redirect("/login");
+      }
+    }
 }
 exports.bookAmbulance = (req,res) => {
   //res.send(student);
-
-  if(available === true){
-    res.render("bookavail.ejs");//ambulance available
-  }else{
-    res.render("booklater.ejs");//not availabe
-  }
+  if(req.cookies.role === undefined && req.cookies.username === undefined){
+      res.redirect("/login")
+    }else{
+      if(req.cookies.role === "student"){
+        if(available === true){
+          res.render("bookavail.ejs");//ambulance available
+        }else{
+          res.render("booklater.ejs");//not availabe
+        }
+      }else{
+        res.redirect("/login");
+      }
+    }
 }
 
 exports.bookForLater = (req, res) => {
-  console.log(req.body);
-  var sql = "INSERT INTO pendingRides VALUES("+req.body.rollnumber+ ",' "+req.body.fname+"','" +req.body.hostel+"');";
-  con.query(sql,  function (err, result){
-      if (err)
-        throw err;
+   if(req.cookies.role === undefined && req.cookies.username === undefined){
+      res.redirect("/login")
+    }else{
+      if(req.cookies.role === "student"){
+        console.log(req.body);
+        var sql = "INSERT INTO pendingRides VALUES("+req.body.rollnumber+ ",' "+req.body.fname+"','" +req.body.hostel+"');";
+        con.query(sql,  function (err, result){
+            if (err)
+              throw err;
 
-      res.render("booksuccess.ejs");//succesfully booked for later page
-  });
+            res.render("booksuccess.ejs");//succesfully booked for later page
+        });
+      }else{
+        res.redirect("/login");
+      }
+    }
 }

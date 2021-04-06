@@ -54,11 +54,11 @@ exports.confirmlogin = (req,res) =>{
 
         // console.log("not zero");
         if(role === "authority"){
-          res.redirect("auth");
+          res.redirect("/auth");
         }else if(role === "student"){
-          res.redirect("student");
+          res.redirect("/student");
         }else{
-          res.redirect("driver");
+          res.redirect("/driver");
         }
       }
   });
