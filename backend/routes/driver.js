@@ -1,14 +1,7 @@
 var express = require("express");
 var router = express.Router();
-const { check, validationResult} = require("express-validator");
-const {dlogin, pending} = require("../controllers/driver");
-
-// var sql = process.env.SELECT;
-
-// router.get("/login", (req, res) => {
-// 	console.log(req);  
-//   res.render("login");
-// })
+const { check, validationResult} = require("express-validator")
+const {dlogin, pending} = require("../controllers/driver")
 
 router.get("/",dlogin);
 

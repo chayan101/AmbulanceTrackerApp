@@ -50,3 +50,9 @@ exports.pending = (req, res) => {
 
   });
 }
+
+function refreshTable(available){
+	if(available == true){
+		fetch("http://localhost:3000/driver")
+}
+}
