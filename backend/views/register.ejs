@@ -138,7 +138,7 @@
                         </div>
 
                         <div class="mt-3">
-                          <button type="button" class="form-control btn btn-primary" onclick="printData()">Submit</button>
+                          <button type="button" class="form-control btn btn-primary" id="csvbtn" >Submit</button>
                         </div>
                     </form>
                 </div>
@@ -146,10 +146,12 @@
                 <br>
                     <!-- <hr class="sidebar-divider my-0"> -->
                 
-                <div class="container" id="out">
-                    <div id="values">
-                        
-                    </div>
+                <div id="values" class="container">
+                    
+                        <table class="d-none" id = "students" style="width:100%">
+                            
+                        </table>
+                    
                 </div>
 
                 <div class="container" id="form">
@@ -264,22 +266,10 @@
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
     <script src="../public/vendor/jquery/jquery.min.js"></script>
     <script src="../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
     <script src="../public/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
     <script src="../public/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="../public/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="../public/js/demo/chart-area-demo.js"></script>
-    <script src="../public/js/demo/chart-pie-demo.js"></script>
      <script src="../public/js/register.js"></script>
     <script>
         // Add the following code if you want the name of the file appear on select

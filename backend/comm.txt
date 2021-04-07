@@ -1,4 +1,4 @@
-create table student(rollnumber int NOT NULL PRIMARY KEY, fname varchar(255) NOT NULL, lname varchar(255), password varchar(255), hostel varchar(255) NOT NULL);
+create table student(rollnumber int NOT NULL PRIMARY KEY, fname varchar(255) NOT NULL, lname varchar(255), hostel varchar(255) NOT NULL, password varchar(255));
 
 create table driver(driverid int NOT NULL PRIMARY KEY, fname varchar(255) NOT NULL, lname varchar(255), username varchar(255), password varchar(255));
 
@@ -6,10 +6,10 @@ create table record(rollnumber int, time TIMESTAMP, distance int, driverid int, 
 
 create table authority(authid int NOT NULL PRIMARY KEY, fname varchar(255) NOT NULL, lname varchar(255), username varchar(255), password varchar(255));
 
- insert into student values(1801109, "Namit", "Goel", "namitgoel", "boys");
-   insert into student values(1801038, "Atul", "Prakash", "atulapr", "boys");
-   insert into student values(1901125, "Shivani", "Joshi", "sjoshi", "girls");
-   insert into student values(1901045, "Shizuka", "Minamoto", "shizuka", "girls");
+ insert into student values(1801109, "Namit", "Goel", "boys","namitgoel");
+   insert into student values(1801038, "Atul", "Prakash", "boys","atulapr");
+   insert into student values(1901125, "Shivani", "Joshi", "girls","sjoshi");
+   insert into student values(1901045, "Shizuka", "Minamoto", "girls","shizuka");
 
 insert into driver values(20016, "Joon", "Nath", "joon123", "joonnath");
    insert into driver values(20148, "Ravi", "Kumar", "ravikumar", "ravi123");

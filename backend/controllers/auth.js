@@ -55,17 +55,36 @@ exports.register = (req,res) =>{
 }
 
 exports.datainsert = (req,res) =>{
-	// var sql = "INSERT INTO student(rollnumber, fname, lname, password, hostel) VALUES (" + req.body.rollno +",'" + req.body.fname + "','" + req.body.lname + "','" +  req.body.password + "','" + req.body.hostel + "')";
- //  	con.query(sql, function (err, result, fields)
- //  	{
- //  		if (err){
- //  			throw err;
- //  		}
-  		// console.log("1 record inserted");
-  		res.render("register");
-  	// });
+   var sql = "INSERT INTO student(rollnumber, fname, lname, hostel, password) VALUES (" + req.body.rollno +",'" + req.body.fname + "','" + req.body.lname + "','" +  req.body.hostel + "','" + req.body.password + "')";
+    console.log(sql);
+    con.query(sql, function (err, result, fields)
+    {
+      if (err){
+        throw err;
+      }
+      res.render("register");
+    });
 
-  	// res.render('auth');
+}
+
+exports.csv = (req,res) =>{
+    var data = Object.keys(req.body).map((key) => [Number(key), req.body[key]]);
+	// var sql = "INSERT INTO student(rollnumber, fname, lname, password, hostel) VALUES (" + req.body.rollno +",'" + req.body.fname + "','" + req.body.lname + "','" +  req.body.password + "','" + req.body.hostel + "')";
+    var sql = "INSERT INTO student(rollnumber, fname, lname, hostel, password) VALUES (?)"
+    var length  = data.length;
+    var array = [];
+    for(var i=1;i<length;i++){
+      array[i-1] = (data[i][1]);
+    }
+
+  	con.query(sql, array, function (err, result, fields)
+  	{
+  		if (err){
+  			throw err;
+  		}
+  		res.render("register");
+  	});
+
 }
 
 exports.map = (req,res)=>{
