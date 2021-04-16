@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Authority-Dashboard</title>
+    <title>Register Authority</title>
 
     <!-- Custom fonts for this template-->
     <link href="../public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -31,53 +31,34 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/auth">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/registerAuth">
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-laptop-medical" aria-hidden="true"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Authority</div>
+                <div class="sidebar-brand-text mx-3">Admin</div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="/auth">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Nav Item - Register -->
-            <li class="nav-item">
-                <a class="nav-link" href="/auth/register">
+            <li class="nav-item active">
+                <a class="nav-link" href="/admin/registerAuth">
                     <i class="fa fa-user-plus" aria-hidden="true"></i>
-                    <span>Register</span></a>
+                    <span>Register Authority</span></a>
             </li>
 
              <!-- Divider -->
             <hr class="sidebar-divider">
 
-
-            <!-- Nav Item - Track -->
-            <li class="nav-item">
-                <a class="nav-link" href="/auth/map">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    <span>Track</span></a>
+            <li class="nav-item ">
+                <a class="nav-link" href="/admin/registerDriver">
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                    <span>Register Driver</span></a>
             </li>
             <hr class="sidebar-divider">
-            <!-- Nav Item - Records -->
-            <li class="nav-item">
-                <a class="nav-link" href="/auth/records">
-                    <i class="fa fa-history" aria-hidden="true"></i>
-                    <span>Records</span></a>
-            </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -129,6 +110,76 @@
 
                 </nav>
                 <!-- End of Topbar -->
+                 <div class="container">
+
+                    <!-- <div class="card o-hidden border-0 shadow-lg my-5"> -->
+                        <!-- <div class="card-body p-0"> -->
+                            <!-- Nested Row within Card Body -->
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Add Authority</h1>
+                            </div>
+                            <!-- <div class="row"> -->
+
+                                <!-- <div class="col-lg-5 d-none d-lg-block bg-register-image"></div> -->
+                                <div class="col-lg-12">
+                                    <div >
+
+                                        <form class="user" action="/admin/registerAuth" method="post">
+<!--                                             <div class="form-group row"> -->
+                                                 <hr class="sidebar-divider my-0">
+                                                <br>
+
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-user" id="fname"
+                                                        placeholder="First Name" name="fname" required>
+                                                </div>
+
+                                                <br>
+                                                <hr class="sidebar-divider my-0">
+                                                <br>
+
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control form-control-user" id="lnameame"
+                                                        placeholder="Last Name" name="lname">
+                                                </div>
+
+                                                <br>
+                                                <hr class="sidebar-divider my-0">
+                                                <br>
+                                                
+
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control form-control-user" id="username"
+                                                        placeholder="Username" name="username" required>
+                                                </div>
+
+                                                <br>
+                                                <hr class="sidebar-divider my-0">
+                                                <br>
+
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control form-control-user"
+                                                        id="password" placeholder="Password" name="password" required>
+                                                </div>
+
+                                                <br>
+                                                <hr class="sidebar-divider my-0">
+                                                <br>
+
+                                            <div class="mt-3">
+                                                <button type="submit" class="form-control btn btn-primary">Submit</button>
+                                            </div>
+                                        </form>
+                                        
+
+                                    </div>
+                                </div>
+                            <!-- </div> -->
+                        <!-- </div> -->
+                    <!-- </div> -->
+
+                <!-- </div> -->
+            </div>
             </div>
             <!-- End of Main Content -->
 

@@ -1,21 +1,6 @@
+const con = require('../functions/dbConnection.js');
 var mysql = require('mysql');
 const { check, validationResult } = require("express-validator");
-var con = mysql.createConnection({
- 
-  host: process.env.HOST,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE,
-  port: 3306
-
-});
-
-
-con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected to database!");
-
-});
 
 exports.dlogin = (req,res) =>{
 	if(req.cookies.role === undefined && req.cookies.username === undefined){
