@@ -6,6 +6,7 @@ const authRoutes = require('./routes/auth');
 const studentRoutes = require('./routes/student');
 const driverRoutes = require('./routes/driver');
 const loginRoutes = require('./routes/login');
+const adminRoutes = require("./routes/admin");
 
 var bodyParser = require("body-parser");
 var urlencodedparser = bodyParser.urlencoded({extended: false});
@@ -25,6 +26,7 @@ app.use("/auth", authRoutes);
 app.use("/student", studentRoutes);
 app.use("/driver", driverRoutes);
 app.use("/login", loginRoutes);
+app.use("/admin",adminRoutes);
 
 
 //firing up the server
@@ -62,7 +64,7 @@ app.listen(port, () => {
 
 
 
-// con.query(select, function (err, result) {  
-// 	if (err) throw err;  
-// 	console.log(result);  
-// });  
+// con.query(select, function (err, result) {
+// 	if (err) throw err;
+// 	console.log(result);
+// });

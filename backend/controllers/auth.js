@@ -21,6 +21,7 @@ exports.alogin = (req,res) =>{
 	if(req.cookies.role === undefined && req.cookies.username === undefined){
     	res.redirect("/login")
   	}else{
+      if(req.cookies.role === "authority"){
   		var sql  = process.env.USERAUTH;
 	    con.query(sql, [req.cookies.username], function (err, result){
 	        if (err)
@@ -34,42 +35,88 @@ exports.alogin = (req,res) =>{
 	          res.render("auth");
 	        }
 	    });
+      }else{
+        res.redirect("/login");
+      }
   	}
 }
 
 exports.register = (req,res) =>{
-	res.render("register");
+  if(req.cookies.role === undefined && req.cookies.username === undefined){
+      res.redirect("/login")
+    }else{
+      if(req.cookies.role === "authority"){
+        res.render("register");
+      }else{
+        res.redirect("/login");
+      }
+    }
+
 }
 
 exports.datainsert = (req,res) =>{
-	var sql = "INSERT INTO student(rollnumber, fname, lname, password, hostel) VALUES (" + req.body.rollno +",'" + req.body.fname + "','" + req.body.lname + "','" +  req.body.password + "','" + req.body.hostel + "')";
-  	con.query(sql, function (err, result, fields)
+   var sql = "INSERT INTO student(rollnumber, fname, lname, hostel, password) VALUES (" + req.body.rollno +",'" + req.body.fname + "','" + req.body.lname + "','" +  req.body.hostel + "','" + req.body.password + "')";
+    console.log(sql);
+    con.query(sql, function (err, result, fields)
+    {
+      if (err){
+        throw err;
+      }
+      res.render("register");
+    });
+
+}
+
+exports.csv = (req,res) =>{
+    var data = Object.keys(req.body).map((key) => [Number(key), req.body[key]]);
+	// var sql = "INSERT INTO student(rollnumber, fname, lname, password, hostel) VALUES (" + req.body.rollno +",'" + req.body.fname + "','" + req.body.lname + "','" +  req.body.password + "','" + req.body.hostel + "')";
+    var sql = "INSERT INTO student(rollnumber, fname, lname, hostel, password) VALUES (?)"
+    var length  = data.length;
+    var array = [];
+    for(var i=1;i<length;i++){
+      array[i-1] = (data[i][1]);
+    }
+
+  	con.query(sql, array, function (err, result, fields)
   	{
   		if (err){
   			throw err;
   		}
-  		console.log("1 record inserted");
   		res.render("register");
   	});
 
-  	// res.render('auth');
 }
 
 exports.map = (req,res)=>{
-  res.render("map");
-}
+  if(req.cookies.role === undefined && req.cookies.username === undefined){
+      res.redirect("/login")
+    }else{
+      if(req.cookies.role === "authority"){
+        res.render("map");
+      }else{
+        res.redirect("/login");
+      }
+    }
+  }
 
 exports.records = (req,res)=>{
-  var sql = "Select * from record";
+  if(req.cookies.role === undefined && req.cookies.username === undefined){
+      res.redirect("/login")
+    }else{
+      if(req.cookies.role === "authority"){
+        var sql = "Select * from record";
 
-  con.query(sql, function (err, result, fields)
-  {
-    if (err){
-      throw err;
-    }
-    //Query result is array of RowDataPackets instead of array of objects
-    res.render("records", {result: JSON.parse(JSON.stringify(result))});//converting it into an array of objects
+        con.query(sql, function (err, result, fields)
+        {
+          if (err){
+            throw err;
+          }
+          //Query result is array of RowDataPackets instead of array of objects
+          res.render("records", {result: JSON.parse(JSON.stringify(result))});//converting it into an array of objects
 
-  });
-
+        });
+      }else{
+        res.redirect("/login");
+      }
+  }
 }
