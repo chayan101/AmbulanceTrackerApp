@@ -1,10 +1,12 @@
-create table student(rollnumber int NOT NULL PRIMARY KEY, fname varchar(255) NOT NULL, lname varchar(255), hostel varchar(255) NOT NULL, password varchar(255));
+create table student(rollnumber int NOT NULL PRIMARY KEY, fname varchar(255) NOT NULL, lname varchar(255), hostel varchar(5) NOT NULL, password varchar(255));
 
 create table driver(driverid int NOT NULL auto_increment = 500 PRIMARY KEY, fname varchar(255) NOT NULL, lname varchar(255), username varchar(255) unique, password varchar(255));
 
 create table record(rollnumber int, time TIMESTAMP, distance int, driverid int, tripid int NOT NULL PRIMARY KEY, FOREIGN KEY (rollnumber) REFERENCES student(rollnumber), FOREIGN KEY (driverid) REFERENCES driver(driverid));
 
 create table authority(authid int NOT NULL auto_increment = 100 PRIMARY KEY, fname varchar(255) NOT NULL, lname varchar(255), username varchar(255) unique, password varchar(255));
+
+create table pendingides(rollnumber int,fname varchar(255), hostel varchar(5),mobile int(10));
 
  insert into student values(1801109, "Namit", "Goel", "boys","namitgoel");
    insert into student values(1801038, "Atul", "Prakash", "boys","atulapr");
