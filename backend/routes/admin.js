@@ -1,8 +1,18 @@
 var express = require("express");
 var router = express.Router();
-const { check, validationResult} = require("express-validator");
-const {alogin, register, datainsert,map,records} = require("../controllers/auth");
+const { body, validationResult} = require("express-validator");
+const {registerAuth, registerDriver} = require("../controllers/admin");
 
-router.post("/registerAuth",registerAuth);
-router.post("/registerDriver",registerDriver);
+router.post("/registerAuth",
+              body('fname').isLength({ min: 2 }),
+              body('lname').isLength({ min: 2 }),
+              body('username').isLength({ min: 2 }),
+              body('password').isLength({ min: 2 }),
+          registerAuth);
+router.post("/registerDriver",
+                        body('fname').isLength({ min: 2 }),
+                        body('lname').isLength({ min: 2 }),
+                        body('username').isLength({ min: 2 }),
+                        body('password').isLength({ min: 2 }),
+                    registerDriver);
 module.exports = router;
