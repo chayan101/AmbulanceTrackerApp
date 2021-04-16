@@ -8,7 +8,7 @@ exports.alogin = (req,res) =>{
     	res.redirect("/login")
   	}else{
       if(req.cookies.role === "authority"){
-  		var sql  = process.env.USERAUTH;
+  		var sql  = "select username from authority where username=?";
 	    con.query(sql, [req.cookies.username], function (err, result){
 	        if (err)
 	          throw err;
@@ -42,7 +42,7 @@ exports.register = (req,res) =>{
 
 exports.datainsert = (req,res) =>{
    var sql = "INSERT INTO student(rollnumber, fname, lname, hostel, password) VALUES (" + req.body.rollno +",'" + req.body.fname + "','" + req.body.lname + "','" +  req.body.hostel + "','" + req.body.password + "')";
-    console.log(sql);
+    // console.log(sql);
     con.query(sql, function (err, result, fields)
     {
       if (err){
