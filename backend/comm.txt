@@ -1,6 +1,6 @@
 create table student(rollnumber int NOT NULL PRIMARY KEY, fname varchar(255) NOT NULL, lname varchar(255), hostel varchar(5) NOT NULL, password varchar(255));
 
-create table driver(driverid int NOT NULL auto_increment PRIMARY KEY, fname varchar(255) NOT NULL, lname varchar(255), username varchar(255) unique, password varchar(255), mobile int(10));
+create table driver(driverid int NOT NULL auto_increment PRIMARY KEY, fname varchar(255) NOT NULL, lname varchar(255), username varchar(255) unique, password varchar(255), mobile bigint);
 
 create table record(rollnumber int, time TIMESTAMP, distance int, driverid int, tripid int NOT NULL PRIMARY KEY, FOREIGN KEY (rollnumber) REFERENCES student(rollnumber), FOREIGN KEY (driverid) REFERENCES driver(driverid));
 
@@ -8,19 +8,11 @@ create table authority(authid int NOT NULL auto_increment PRIMARY KEY, fname var
 
 create table pendingrides(rollnumber int,fname varchar(255), hostel varchar(5),mobile int(10), FOREIGN KEY (rollnumber) REFERENCES student(rollnumber));
 
- insert into student values(1801109, "Namit", "Goel", "boys","namitgoel");
-   insert into student values(1801038, "Atul", "Prakash", "boys","atulapr");
-   insert into student values(1901125, "Shivani", "Joshi", "girls","sjoshi");
-   insert into student values(1901045, "Shizuka", "Minamoto", "girls","shizuka");
+insert into student values(1801045, "student", "student", "boys","teststudent");
+ 
 
-insert into driver values(20016, "Joon", "Nath", "joon123", "joonnath");
-   insert into driver values(20148, "Ravi", "Kumar", "ravikumar", "ravi123");
+insert into driver values("driver", "driver", "driver", "testdriver", 7773027420);
 
-insert into record values(1801038, "2020-10-11 16:30:25", "45", "20016", "1");
-   insert into record values(1801109, "2019-08-25 10:40:15", "30", "20148", "2");
-   insert into record values(1901125, "2020-11-30 13:00:45", "25", "20016", "3");
-   insert into record values(1901045, "2019-04-02 12:25:55", "50", "20148", "4");
+insert into authority values("faculty", "faculty", "faculty", "testfaculty");
 
-insert into authority values(3014536, "Govind", "Pant", "govindpant", "gpant123");
-   insert into authority values(3015526, "Rajat", "Singh", "rajsingh", "rsingh123");
-   insert into authority values(3025841, "Sumit", "Mishra", "mishrasumit", "sumit123");
+insert into admin values("admin", "ambulancetrackerapp");
