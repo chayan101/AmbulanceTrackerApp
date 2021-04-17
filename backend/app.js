@@ -7,6 +7,9 @@ const studentRoutes = require('./routes/student');
 const driverRoutes = require('./routes/driver');
 const loginRoutes = require('./routes/login');
 const adminRoutes = require("./routes/admin");
+const {alterFlag} = require("./functions/functions");
+var socket = require("socket.io");
+
 
 var bodyParser = require("body-parser");
 var urlencodedparser = bodyParser.urlencoded({extended: false});
@@ -30,13 +33,33 @@ app.use("/admin",adminRoutes);
 
 
 //firing up the server
-app.listen(port, () => {
+var server = app.listen(port, () => {
   console.log('app listening on port: ' + port)
 })
 
 
 
+//socket.io
 
+var io = socket(server);
+
+//here socket = the particular socket established between client and server
+io.on('connection' , function(socket){
+  console.log(`connection established between server and client @ ${socket.id}`);
+
+  socket.on('setflag', function(data){
+      var flag = alterFlag(data);
+    // console.log(data);
+    // //io.sockets refers to all the sockets connected to the server
+    // io.sockets.emit('chat', data);
+    // io.sockets.emit('clear');
+  });
+
+  // socket.on('typing' , (data)=>{
+  //   //socket is the socket connected at the moment && broadcast means sending msg to every other socket
+  //   socket.broadcast.emit('typing', data);
+  // });
+});
 
 
 

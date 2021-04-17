@@ -1,4 +1,5 @@
-const {alteeFlag} = "../../functions/functions";
+var socket = io.connect('http://localhost:3000');
+
 // function getLocation(){
 //           navigator.geolocation.getCurrentPosition(function (pos) {
 //               var lat = pos.coords.latitude;
@@ -32,14 +33,13 @@ function fetchdata(){
   }
 
 function ride()
-{
+{ socket.emit('setflag',true);
   document.getElementById("startride").classList.add("d-none");
   document.getElementById("endride").classList.remove("d-none");
 }
 
 function changeFlag(){
-  var flag = alterFlag(false);
-  location.reload();
+  socket.emit('setflag',false);
 }
 
 $(document).ready(function(){
