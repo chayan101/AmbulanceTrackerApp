@@ -1,14 +1,19 @@
+const con = require('../functions/dbConnection.js');
 var mysql = require('mysql');
 const { check, validationResult } = require("express-validator");
+<<<<<<< HEAD
 const con = require("../functions/dbConnection.js");
 const {hashPassword} = require("../functions/functions");
+=======
+
+>>>>>>> 8ff32a21bd1a6cb30ce07eb1524d1c67cd08dd19
 
 exports.alogin = (req,res) =>{
 	if(req.cookies.role === undefined && req.cookies.username === undefined){
     	res.redirect("/login")
   	}else{
       if(req.cookies.role === "authority"){
-  		var sql  = process.env.USERAUTH;
+  		var sql  = "select username from authority where username=?";
 	    con.query(sql, [req.cookies.username], function (err, result){
 	        if (err)
 	          throw err;
@@ -43,7 +48,7 @@ exports.register = (req,res) =>{
 exports.datainsert = (req,res) =>{
   req.body.password = hashPassword(req.body.password);
    var sql = "INSERT INTO student(rollnumber, fname, lname, hostel, password) VALUES (" + req.body.rollno +",'" + req.body.fname + "','" + req.body.lname + "','" +  req.body.hostel + "','" + req.body.password + "')";
-    console.log(sql);
+    // console.log(sql);
     con.query(sql, function (err, result, fields)
     {
       if (err){

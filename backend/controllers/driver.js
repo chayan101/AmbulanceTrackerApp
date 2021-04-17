@@ -1,12 +1,13 @@
+const con = require('../functions/dbConnection.js');
 var mysql = require('mysql');
 const { check, validationResult } = require("express-validator");
-const con = require("../functions/dbConnection.js");
+
 
 exports.dlogin = (req,res) =>{
 	if(req.cookies.role === undefined && req.cookies.username === undefined){
     	res.redirect("/login")
   	}else{
-  		var sql  = process.env.USERDRIVER;
+  		var sql  = "select username from driver where username=?";
 	    con.query(sql, [req.cookies.username], function (err, result){
 	        if (err)
 	          throw err;

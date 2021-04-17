@@ -1,6 +1,7 @@
+const con = require('../functions/dbConnection.js');
 var mysql = require('mysql');
 const { check, validationResult } = require("express-validator");
-const con = require("../functions/dbConnection.js");
+
 
 exports.login = (req,res) =>{
   res.render('login');
@@ -9,41 +10,38 @@ exports.login = (req,res) =>{
 exports.confirmlogin = (req,res) =>{
   console.log(req.body);
 
-  var values = [req.body.email, req.body.password];
+  var values = [req.body.email];
   var role = req.body.role;
   var sql = null;
 
   if(role === "authority"){
-    sql = process.env.CHECKAUTH;
+    sql = "select username, password from authority where username=?";
   }else if(role === "student"){
-    sql = process.env.CHECKSTUDENT;
+    sql = "select rollnumber, password from student where rollnumber=?";
   }else{
-    sql = process.env.CHECKDRIVER;
+    sql = "select username, password from driver where username=?";
   }
 
   // console.log(sql);
   con.query(sql, values, function (err, result) {
       if (err)
         throw err;
-
-      // console.log(values);
-      // console.log(result.length);
       if(result.length === 0){
-        // console.log("login");
-        // msg = "Invalid Username/Password/Role";
         res.redirect("login");
-        // flag = 1;
       }else{
-        res.cookie('username', values[0]);
-        res.cookie('role', role);
-
-        // console.log("not zero");
-        if(role === "authority"){
-          res.redirect("auth");
-        }else if(role === "student"){
-          res.redirect("student");
+        const match = bcrypt.compare(req.body.password, result[0].password);
+        if(match){
+          res.cookie('username', values[0]);
+          res.cookie('role', role);
+          if(role === "authority"){
+            res.redirect("auth");
+          }else if(role === "student"){
+            res.redirect("student");
+          }else{
+            res.redirect("driver");
+          }
         }else{
-          res.redirect("driver");
+          res.redirect("login");
         }
       }
   });

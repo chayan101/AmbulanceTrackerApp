@@ -1,14 +1,14 @@
 var mysql = require('mysql');
 const { check, validationResult } = require("express-validator");
 var available = require("../models/ambulance");
-const con = require("../functions/dbConnection.js");
+const con = require('../functions/dbConnection.js')
 
 
 exports.slogin = (req,res) =>{
   if(req.cookies.role === undefined && req.cookies.username === undefined){
     	res.redirect("/login")
   	}else{
-  		var sql  = process.env.USERSTUDENT;
+  		var sql  = "select rollnumber from student where rollnumber=?";
 	    con.query(sql, [req.cookies.username], function (err, result){
 	        if (err)
 	          throw err;

@@ -52,3 +52,16 @@ exports.registerDriver = async (req,res)=>{
   }
 
 };
+
+exports.registerDriver = async (req,res)=>{
+  res.send("jeemdc");
+};
+
+
+exports.auth = async (req,res)=>{
+  res.render("adminAuth");
+};
+
+exports.driver = async (req,res)=>{
+  res.render("adminDriver");
+};
