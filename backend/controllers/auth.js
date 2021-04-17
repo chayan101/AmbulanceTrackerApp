@@ -41,11 +41,12 @@ exports.register = (req,res) =>{
 
 }
 
-exports.datainsert = (req,res) =>{
-  req.body.password = hashPassword(req.body.password);
+exports.datainsert = async (req,res) =>{
+	try{
+  req.body.password =  await hashPassword(req.body.password);
    var sql = "INSERT INTO student(rollnumber, fname, lname, hostel, password) VALUES (" + req.body.rollno +",'" + req.body.fname + "','" + req.body.lname + "','" +  req.body.hostel + "','" + req.body.password + "')";
     // console.log(sql);
-    con.query(sql, function (err, result, fields)
+     await con.query(sql, function (err, result, fields)
     {
       if (err){
         throw err;
@@ -53,10 +54,14 @@ exports.datainsert = (req,res) =>{
       res.render("register");
     });
 
+	}catch(error){
+		res.status(500).send(error);
+	}
+
 }
 
-exports.csv = (req,res) =>{
-
+exports.csv = async (req,res) =>{
+	try{
     var data = Object.keys(req.body).map((key) => [Number(key), req.body[key]]);
 	// var sql = "INSERT INTO student(rollnumber, fname, lname, password, hostel) VALUES (" + req.body.rollno +",'" + req.body.fname + "','" + req.body.lname + "','" +  req.body.password + "','" + req.body.hostel + "')";
 
@@ -67,13 +72,17 @@ exports.csv = (req,res) =>{
       array[i-1] = (data[i][1]);
     }
 
-  	con.query(sql, array, function (err, result, fields)
+  	await con.query(sql, array, function (err, result, fields)
   	{
   		if (err){
   			throw err;
   		}
   		res.render("register");
   	});
+
+	}catch(error){
+		res.status(500).send(error);
+	}
 
 }
 

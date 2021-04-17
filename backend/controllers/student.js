@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 const { check, validationResult } = require("express-validator");
-var available = require("../models/ambulance");
+const {checkAvailibilty, alterflag} = require("../functions/functions");
 const con = require('../functions/dbConnection.js')
 
 
@@ -28,7 +28,8 @@ exports.slogin = (req,res) =>{
 exports.bookAmbulance = (req,res) => {
   //res.send(student);
 
-  if(available === true){
+  if(checkAvailibilty()){
+    var flag = alterFlag(true);
     res.render("bookavail.ejs");//ambulance available
   }else{
     res.render("booklater.ejs");//not availabe

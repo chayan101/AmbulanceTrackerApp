@@ -16,4 +16,12 @@ router.post("/registerDriver",
                         body('username').isLength({ min: 2 }),
                         body('password').isLength({ min: 2 }),
                     registerDriver);
+
+router.get("/registerAuth", (req,res)=>{
+  res.render("adminAuth");
+});
+
+router.get("/registerDriver", (req,res)=>{
+  res.render("adminDriver");
+});
 module.exports = router;

@@ -1,6 +1,7 @@
 const con = require('../functions/dbConnection.js');
 var mysql = require('mysql');
 const { check, validationResult } = require("express-validator");
+var bookride = require("../models/bookride")
 
 
 exports.dlogin = (req,res) =>{
@@ -17,7 +18,7 @@ exports.dlogin = (req,res) =>{
 	        }else{
 	          console.log("hello");
 	          // console.log(req.cookies.role === undefined);
-	          res.render("driver");
+	          res.render("driver" , {bookride: bookride});
 	        }
 	    });
   	}

@@ -35,8 +35,8 @@ exports.registerDriver = async (req,res)=>{
   }
   try{
     req.body.password = await hashPassword(req.body.password);
-    var sql = "insert into driver(fname, lname, username,password) values('" + req.body.fname + "','" + req.body.lname +"','"
-              +req.body.username+ "','" + req.body.password + "');" ;
+    var sql = "insert into driver(fname, lname, username,password, mobile) values('" + req.body.fname + "','" + req.body.lname +"','"
+              +req.body.username+ "','" + req.body.password + "'," + req.body.mobile + ");" ;
 
     await con.query(sql, (err,result)=>{
         if(err){
@@ -51,17 +51,4 @@ exports.registerDriver = async (req,res)=>{
     res.sendStatus(500);
   }
 
-};
-
-exports.registerDriver = async (req,res)=>{
-  res.send("jeemdc");
-};
-
-
-exports.auth = async (req,res)=>{
-  res.render("adminAuth");
-};
-
-exports.driver = async (req,res)=>{
-  res.render("adminDriver");
 };
