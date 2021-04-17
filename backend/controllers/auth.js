@@ -1,12 +1,8 @@
 const con = require('../functions/dbConnection.js');
 var mysql = require('mysql');
 const { check, validationResult } = require("express-validator");
-<<<<<<< HEAD
-const con = require("../functions/dbConnection.js");
 const {hashPassword} = require("../functions/functions");
-=======
 
->>>>>>> 8ff32a21bd1a6cb30ce07eb1524d1c67cd08dd19
 
 exports.alogin = (req,res) =>{
 	if(req.cookies.role === undefined && req.cookies.username === undefined){
