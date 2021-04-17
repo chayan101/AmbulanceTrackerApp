@@ -1,7 +1,7 @@
 const con = require('../functions/dbConnection.js');
 var mysql = require('mysql');
 const { check, validationResult } = require("express-validator");
-var bookride = require("../models/bookride")
+const {checkAvailibilty, alterflag} = require("../functions/functions");
 
 
 exports.dlogin = (req,res) =>{
@@ -18,7 +18,7 @@ exports.dlogin = (req,res) =>{
 	        }else{
 	          console.log("hello");
 	          // console.log(req.cookies.role === undefined);
-	          res.render("driver" , {bookride: bookride});
+	          res.render("driver" , {bookride: checkAvailibilty()});
 	        }
 	    });
   	}
@@ -36,10 +36,4 @@ exports.pending = (req, res) => {
     res.render("pending", {result: JSON.parse(JSON.stringify(result))});//converting it into an array of objects
 
   });
-}
-
-function refreshTable(available){
-	if(available == true){
-		fetch("http://localhost:3000/driver")
-}
 }

@@ -129,16 +129,17 @@
 
                 </nav>
                 <!-- End of Topbar -->
-            <% if(bookride == true) { %>
-                  <div class="mt-3">
-                    <button type="submit" class="form-control btn btn-primary">Start Ride</button>
-                  </div>
-
-                  <div class="mt-3">
-                    <button type="submit" class="form-control btn btn-primary">End Ride</button>
+            <% if(bookride == false) { %>
+                  <div class="mt-3" id="startride" onclick="ride()">
+                    <button type="submit"  class="form-control btn btn-primary">Start Ride</button>
                   </div>
             <% } %>
+                <div class="mt-3 d-none" id="endride" onclick="changeFlag()">
+                    <button type="submit"  class="form-control btn btn-primary">End Ride</button>
+                </div>
             </div>
+
+                  
             <!-- End of Main Content -->
 
         </div>

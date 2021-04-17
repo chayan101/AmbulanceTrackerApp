@@ -1,4 +1,4 @@
-
+const {alteeFlag} = "../../functions/functions";
 // function getLocation(){
 //           navigator.geolocation.getCurrentPosition(function (pos) {
 //               var lat = pos.coords.latitude;
@@ -31,6 +31,16 @@ function fetchdata(){
     });
   }
 
+function ride()
+{
+  document.getElementById("startride").classList.add("d-none");
+  document.getElementById("endride").classList.remove("d-none");
+}
+
+function changeFlag(){
+  var flag = alterFlag(false);
+  location.reload();
+}
 
 $(document).ready(function(){
  setTimeout(fetchdata,1000);

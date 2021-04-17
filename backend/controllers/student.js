@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 const { check, validationResult } = require("express-validator");
-const {checkAvailibilty, alterflag} = require("../functions/functions");
+const {checkAvailibilty, alterFlag} = require("../functions/functions");
 const con = require('../functions/dbConnection.js')
 
 
