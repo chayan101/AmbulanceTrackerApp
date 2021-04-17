@@ -1,21 +1,6 @@
 var mysql = require('mysql');
 const { check, validationResult } = require("express-validator");
-var con = mysql.createConnection({
- 
-  host: process.env.HOST,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE,
-  port: 3306
-
-});
-
-
-con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected to database!");
-
-});
+const con = require("../functions/dbConnection.js");
 
 exports.login = (req,res) =>{
   res.render('login');
@@ -35,7 +20,7 @@ exports.confirmlogin = (req,res) =>{
   }else{
     sql = process.env.CHECKDRIVER;
   }
-  
+
   // console.log(sql);
   con.query(sql, values, function (err, result) {
       if (err)
