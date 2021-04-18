@@ -76,17 +76,18 @@ exports.csv = async (req,res) =>{
     var sql = "INSERT INTO student(rollnumber, fname, lname, hostel, password) VALUES (?)"
     var length  = data.length;
     var array = [];
+    console.log(data)
     for(var i=1;i<length;i++){
       array[i-1] = (data[i][1]);
     }
 
-  	await con.query(sql, array, function (err, result, fields)
-  	{
-  		if (err){
-  			throw err;
-  		}
-  		res.render("register");
-  	});
+  	// await con.query(sql, array, function (err, result, fields)
+  	// {
+  	// 	if (err){
+  	// 		throw err;
+  	// 	}
+  	// 	res.render("register");
+  	// });
 
 	}catch(error){
 		res.status(500).send(error);

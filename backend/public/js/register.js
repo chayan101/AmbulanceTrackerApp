@@ -5,6 +5,7 @@ var fileInput = document.getElementById("customFile"),
         var reader = new FileReader();
         reader.onload = function () {
             result = reader.result.split("\n");
+            alert("readed");
             document.getElementById("form").classList.add("d-none");
 
             var table = document.getElementById("students");
