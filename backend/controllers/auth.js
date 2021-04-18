@@ -4,28 +4,36 @@ const { check, validationResult } = require("express-validator");
 const {hashPassword} = require("../functions/functions");
 
 
-exports.alogin = (req,res) =>{
-	if(req.cookies.role === undefined && req.cookies.username === undefined){
-    	res.redirect("/login")
-  	}else{
+exports.alogin = async (req,res) =>{
+  try
+  {
+      if(req.cookies.role === undefined && req.cookies.username === undefined){
+      res.redirect("/login")
+    }else{
       if(req.cookies.role === "authority"){
-  		var sql  = "select username from authority where username=?";
-	    con.query(sql, [req.cookies.username], function (err, result){
-	        if (err)
-	          throw err;
+      var sql  = "select username from authority where username=?";
+      con.query(sql, [req.cookies.username], function (err, result){
+          if (err)
+            throw err;
 
-	        if(result.length === 0){
-	          res.redirect("/login");
-	        }else{
-	          console.log("hello");
-	          // console.log(req.cookies.role === undefined);
-	          res.render("auth");
-	        }
-	    });
+          if(result.length === 0){
+            res.redirect("/login");
+          }else{
+            console.log("hello");
+            // console.log(req.cookies.role === undefined);
+            res.render("auth");
+          }
+      });
       }else{
         res.redirect("/login");
       }
-  	}
+    }
+  }
+  catch(error)
+  {
+    console.log(error);
+    res.sendStatus(500);
+  }
 }
 
 exports.register = (req,res) =>{
