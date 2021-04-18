@@ -24,16 +24,34 @@ exports.dlogin = (req,res) =>{
   	}
 }
 
-exports.pending = (req, res) => {
-  var sql = "Select * from pendingrides";
+exports.pending = async (req, res) => {
+	try{
+  var sql = "Select * from pendingrides limit 1";
 
-  con.query(sql, function (err, result, fields)
+  await con.query(sql, function (err, result)
   {
     if (err){
       throw err;
     }
     //Query result is array of RowDataPackets instead of array of objects
-    res.render("pending", {result: JSON.parse(JSON.stringify(result))});//converting it into an array of objects
+    //res.render("pending", {result: JSON.parse(JSON.stringify(result))});//converting it into an array of objects
+		console.log(result);
+		if(result.length === 0){
+			res.status(200).render('driver', {flag:1});
+		}
+		else{
+		res.status(200).render("driver",{
+			flag:2,
+			fname: result[0].fname,
+			rollnumber: result[0].rollnumber,
+			hostel: result[0].hostel,
+			mobile: result[0].mobile
+		});
+	}
 
-  });
+	});
+}catch(error){
+	console.log(error);
+	res.sendStatus(500);
 }
+};

@@ -28,6 +28,7 @@ exports.confirmlogin = async (req,res) =>{
     await con.query(sql, values, async function (err, result) {
         if (err)
           throw err;
+          try{
         if(result.length === 0){
           res.redirect("login");
         }else{
@@ -50,6 +51,10 @@ exports.confirmlogin = async (req,res) =>{
             res.redirect("login");
           }
         }
+      }catch(error){
+        console.log(error);
+        res.sendStatus(500);
+      }
     });
   }catch(error)
   {
