@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 var bookride = false;
-
+const con = require('../functions/dbConnection')
 
 exports.hashPassword = async (password) => {
   try{
@@ -24,16 +24,23 @@ exports.checkBookride = ()=>{
   return bookride;
 };
 
-exports.getPendingRides = async (req, res) => {
+exports.getPendingRides = async () => {
 	try{
   var sql = "Select * from pendingrides limit 1";
-
+  // const result2 = [];
   await con.query(sql, function (err, result)
   {
     if (err){
       throw err;
     }
-    return result;
+    
+    if(result.length === 0){
+      return false;
+    }else{
+      return true;
+    }
+    // result2 = result;
+    // return result2;
     //Query result is array of RowDataPackets instead of array of objects
     //res.render("pending", {result: JSON.parse(JSON.stringify(result))});//converting it into an array of objects
 	// 	console.log(result);
@@ -51,6 +58,7 @@ exports.getPendingRides = async (req, res) => {
 	// }
 
 	});
+  // return result2;
 }catch(error){
 	console.log(error);
 	res.sendStatus(500);
