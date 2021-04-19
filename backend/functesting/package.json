@@ -1,0 +1,11 @@
+{
+  "name": "functesting",
+  "version": "1.0.0",
+  "description": "function testing",
+  "main": "admin.test.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Atul",
+  "license": "ISC"
+}
