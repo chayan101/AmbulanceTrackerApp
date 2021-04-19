@@ -42,6 +42,13 @@ function changeFlag(){
   socket.emit('setflag',false);
 }
 
+//listening for "book" event
+socket.on("book",()=>{
+  //JavaScript to render the startride button
+});
+
+
+
 $(document).ready(function(){
  setTimeout(fetchdata,1000);
 });

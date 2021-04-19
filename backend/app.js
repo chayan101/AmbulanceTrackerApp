@@ -55,6 +55,12 @@ io.on('connection' , function(socket){
     // io.sockets.emit('clear');
   });
 
+  //when student books a ride
+  socket.on("book", ()=>{
+      var flag = alterFlag(true);
+      socket.broadcast.emit("book");
+  });
+
   // socket.on('typing' , (data)=>{
   //   //socket is the socket connected at the moment && broadcast means sending msg to every other socket
   //   socket.broadcast.emit('typing', data);
