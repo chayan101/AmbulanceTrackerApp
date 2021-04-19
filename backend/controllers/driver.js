@@ -98,10 +98,12 @@ exports.dlogin = async(req,res)=>{
 						if(err){
 							 console.log(err);
 							 res.sendStatus(500);
-						}else if(!checkBookride() && result2.length === 0){
-							res.status(200).render("driver", {flag:1},{async: true});
-						}else{
-							res.status(200).render("driver",{flag:4},{async: true});
+						 }
+						// }else if(!checkBookride() && result2.length === 0){
+						// 	res.status(200).render("driver", {flag:1},{async: true});
+						// }
+						else{
+							res.status(200).render("driver",{flag:1},{async: true});
 						}
 					});
 				}catch(error){
