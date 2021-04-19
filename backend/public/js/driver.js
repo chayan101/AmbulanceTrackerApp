@@ -55,3 +55,10 @@ $(document).ready(function(){
 
 
  // getLocation();
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+  navigator.geolocation.getCurrentPosition(onSuccess, onError);
+}
+function onSuccess(position) {
+  alert('Latitude: '+ position.coords.latitude +'Longitude: '+ position.coords.longitude);
+}
