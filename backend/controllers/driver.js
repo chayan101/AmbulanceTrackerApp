@@ -22,15 +22,29 @@ exports.dlogin = async (req,res) =>{
 		        		        if(result.length === 0){
 		        		          res.redirect("/login");
 		        		        }else{
-		        							// var ridePending = await getPendingRides();
-		        							// console.log(ridePending);
-		        		   //        if(!checkBookride() && !ridePending ){
-		        					// 	res.status(200).render("driver", {flag:1},{async: true});
-		        					// }else{
-		        					// 	res.status(200).render("driver",{flag:4},{async: true});
-		        					// }
-		        		          // console.log(req.cookies.role === undefined);
-		        					res.status(200).render("driver", {flag:1});
+		        		        	// var result2;
+		        		        	try{
+
+										var sql = "Select * from pendingrides limit 1";
+										await con.query(sql, function (err, result)
+										{
+										 	if (err){
+										      console.log(error);
+	  										  res.sendStatus(500);
+										    }
+										   	if(!checkBookride() && result.length === 0){
+		        								res.status(200).render("driver", {flag:1},{async: true});
+		        							}else{
+		        								res.status(200).render("driver",{flag:4},{async: true});
+			        						}
+										});
+										}catch(error){
+											console.log(error);
+											res.sendStatus(500);
+										}
+		        						// console.log(result2);
+		        		          	
+		        					// res.status(200).render("driver", {flag:1});
 		        		        }
 		        		    }catch(error){
 		        		    	console.log(error);
