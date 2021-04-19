@@ -16,11 +16,11 @@ exports.slogin = (req,res) =>{
 	        if(result.length === 0){
 	          res.redirect("/login");
 	        }else{
-	          fname = req.body.fname;
-            rollnumber = req.body.rollnumber;
-            hostel = req.body.hostel;
+	          // fname = req.body.fname;
+           //  rollnumber = req.body.rollnumber;
+           //  hostel = req.body.hostel;
 	          // console.log(req.cookies.role === undefined);
-	          res.render("student.ejs");//student home page;
+	          res.render("student.ejs",{flag: checkBookride()?1:0, mobile: "9521420803"});//student home page;
 	        }
 	    });
   	}

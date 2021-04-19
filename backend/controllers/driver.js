@@ -2,7 +2,7 @@ const con = require('../functions/dbConnection')
 var mysql = require('mysql');
 const { check, validationResult } = require("express-validator");
 const {checkBookride, alterflag, getPendingRides} = require("../functions/functions");
-
+var result3 = [];
 
 exports.dlogin = async (req,res) =>{
 	try
@@ -11,7 +11,7 @@ exports.dlogin = async (req,res) =>{
 	    	res.redirect("/login")
 	  	}else{
 	  		var sql  = "select username from driver where username=?";
-		    await con.query(sql, [req.cookies.username],async function (err, result){
+		    await con.query(sql, [req.cookies.username],async function (err, result2){
 		        
 		        try{
 		        				if (err)
@@ -19,7 +19,7 @@ exports.dlogin = async (req,res) =>{
 		        		        	res.send(err);
 		        		        }
 		        	
-		        		        if(result.length === 0){
+		        		        if(result2.length === 0){
 		        		          res.redirect("/login");
 		        		        }else{
 		        		        	// var result2;
@@ -32,18 +32,18 @@ exports.dlogin = async (req,res) =>{
 										      console.log(error);
 	  										  res.sendStatus(500);
 										    }
-										   	if(!checkBookride() && result.length === 0){
-		        								res.status(200).render("driver", {flag:1},{async: true});
-		        							}else{
-		        								res.status(200).render("driver",{flag:4},{async: true});
-			        						}
+										   	result3 = result;
 										});
 										}catch(error){
 											console.log(error);
 											res.sendStatus(500);
 										}
 		        						// console.log(result2);
-		        		          	
+		        		          		if(!checkBookride() && result3.length === 0){
+		        								res.status(200).render("driver", {flag:1},{async: true});
+		        							}else{
+		        								res.status(200).render("driver",{flag:4},{async: true});
+			        						}
 		        					// res.status(200).render("driver", {flag:1});
 		        		        }
 		        		    }catch(error){
