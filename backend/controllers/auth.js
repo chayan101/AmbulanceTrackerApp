@@ -57,9 +57,9 @@ exports.datainsert = async (req,res) =>{
      await con.query(sql, function (err, result, fields)
     {
       if (err){
-        throw err;
+				res.render("register",{message:"Invalid credentials"});
       }
-      res.render("register");
+      res.render("register", {message:"Student registered successfully"});
     });
 
 	}catch(error){
