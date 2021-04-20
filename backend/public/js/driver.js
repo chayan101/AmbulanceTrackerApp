@@ -1,17 +1,22 @@
 var socket = io.connect('http://localhost:3000');
 
-// function getLocation(){
-//           navigator.geolocation.getCurrentPosition(function (pos) {
-//               var lat = pos.coords.latitude;
-//               var lng = pos.coords.longitude;
-//               if (lat == null) {
-//                   alert("GPS not activated!");
-//               } else {
-//                   alert("Latitude: "+ lat + " , Longitude: " + lng );
-//               }
-//           });
-// }
+function getLocation(){
+  navigator.geolocation.getCurrentPosition(function (pos) {
+    var lat = pos.coords.latitude;
+    var lng = pos.coords.longitude;
+    var str = [lat ,lng]
+    socket.emit("LatandLang",str);
+    if (lat == null) {
+      alert("GPS not activated!");
+    }
+  });
+}
 
+$(document).ready(function(){
+ setTimeout(getLocation(),1000);
+});
+
+getLocation();
 // function fetchdata(){
 //     $.ajax({
 //       type: "GET",
@@ -45,7 +50,8 @@ function check()
 }
 
 function ride()
-{ socket.emit('setflag',true);
+{ 
+  socket.emit('setflag',true);
 
   document.getElementById("startride").classList.add("d-none");
   document.getElementById("endride").classList.remove("d-none");
@@ -70,13 +76,3 @@ socket.on("book",()=>{
 // $(document).ready(function(){
 //  setTimeout(fetchdata,1000);
 // });
-
-
- // getLocation();
-document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {
-  navigator.geolocation.getCurrentPosition(onSuccess, onError);
-}
-function onSuccess(position) {
-  alert('Latitude: '+ position.coords.latitude +'Longitude: '+ position.coords.longitude);
-}

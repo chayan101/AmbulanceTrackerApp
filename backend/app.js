@@ -7,7 +7,7 @@ const studentRoutes = require('./routes/student');
 const driverRoutes = require('./routes/driver');
 const loginRoutes = require('./routes/login');
 const adminRoutes = require("./routes/admin");
-const {alterFlag} = require("./functions/functions");
+const {alterFlag, LatLng, getLocation} = require("./functions/functions");
 var socket = require("socket.io");
 
 
@@ -15,7 +15,7 @@ var bodyParser = require("body-parser");
 var urlencodedparser = bodyParser.urlencoded({extended: false});
 const app = express();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 
 // using static files and other stuffs
@@ -54,12 +54,19 @@ io.on('connection' , function(socket){
     // io.sockets.emit('chat', data);
     // io.sockets.emit('clear');
   });
+  socket.on('LatandLang',function(data){
+    LatLng(data);
+    console.log("Location: " + getLocation());
+    // socket.emit("getLatLng",getLocation());
+      // console.log(data);
+  });
 
   //when student books a ride
   socket.on("book", ()=>{
       var flag = alterFlag(true);
       socket.broadcast.emit("book");
   });
+
 
   // socket.on('typing' , (data)=>{
   //   //socket is the socket connected at the moment && broadcast means sending msg to every other socket
