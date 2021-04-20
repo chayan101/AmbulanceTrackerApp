@@ -12,28 +12,41 @@ var socket = io.connect('http://localhost:3000');
 //           });
 // }
 
-function fetchdata(){
-    $.ajax({
-      type: "GET",
-      url: "/driver/check",
-      data: "hello",
-      success: function (data) {
-         // location.reload()
-        // alert("done");
-        if(data.message === true){
-          location.reload();
-        }
-        console.log(data.message);
-      },
-      complete:function(data){
-        setTimeout(fetchdata,1000);
-      }
+// function fetchdata(){
+//     $.ajax({
+//       type: "GET",
+//       url: "/driver/check",
+//       data: "hello",
+//       success: function (data) {
+//          // location.reload()
+//         // alert("done");
+//         if(data.message === true){
+//           location.reload();
+//         }
+//         console.log(data.message);
+//       },
+//       complete:function(data){
+//         setTimeout(fetchdata,1000);
+//       }
 
-    });
-  }
+//     });
+//   }
+
+function start(){
+  document.getElementById("flag4").classList.add("d-none");
+
+  document.getElementById("flag3").classList.add("d-none");
+  document.getElementById("endride").classList.remove("d-none");
+}
+
+function check()
+{
+  location.reload();
+}
 
 function ride()
 { socket.emit('setflag',true);
+
   document.getElementById("startride").classList.add("d-none");
   document.getElementById("endride").classList.remove("d-none");
 }
@@ -49,9 +62,9 @@ socket.on("book",()=>{
 
 
 
-$(document).ready(function(){
- setTimeout(fetchdata,1000);
-});
+// $(document).ready(function(){
+//  setTimeout(fetchdata,1000);
+// });
 
 
  // getLocation();

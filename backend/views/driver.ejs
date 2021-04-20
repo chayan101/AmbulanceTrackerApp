@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Driver-Dashboard</title>
+    <title>Driver</title>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js" ></script>
 
     <!-- Custom fonts for this template-->
@@ -28,64 +28,6 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/auth">
-                <div class="sidebar-brand-icon">
-                    <i class="fas fa-laptop-medical" aria-hidden="true"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Driver</div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="/driver">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Nav Item - Register -->
-            <li class="nav-item">
-                <a class="nav-link" href="/driver/pending">
-                    <i class="fa fa-user-plus" aria-hidden="true"></i>
-                    <span>Pending Rides</span></a>
-            </li>
-
-             <!-- Divider -->
-            <hr class="sidebar-divider">
-
-
-            <!-- Nav Item - Track
-            <li class="nav-item">
-                <a class="nav-link" href="/auth/map">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    <span>Track</span></a>
-            </li>
-            <hr class="sidebar-divider">
-              Nav Item - Records -->
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="/auth/records">
-                    <i class="fa fa-history" aria-hidden="true"></i>
-                    <span>Records</span></a>
-            </li>
-             Divider -->
-            <!-- <hr class="sidebar-divider d-none d-md-block">
-
-             Sidebar Toggler (Sidebar) -->
-            <!-- <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>  -->
-
-
-        </ul>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -97,10 +39,7 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
+                    
 
                     <!-- Topbar Search -->
 
@@ -131,11 +70,10 @@
                 </nav>
                 
 
-
-            <% if(flag == 1){ %>
-                <div><h1>No Rides For Now!!!!!!</h1></div>
-            <% }else if(flag == 2){ %>
-                <table>
+            <div class="d-none" id="flag1"><h1>No Rides For Now!!!!!!</h1></div>
+                <div class="d-none" id="flag2">
+                    <table class="table">
+                        <thead>
                     <tr>
                         <th>Name</th>
                         <th>Hostel</th>
@@ -143,6 +81,7 @@
                         <th>Mobile</th>
                         <th>......</th>
                     </tr>
+                </thead>
 
                     <tr>
                         <td><%= fname %></td>
@@ -158,13 +97,38 @@
                         </td>
                     </tr>
                 </table>
-            <% }else if(flag == 3){ %>
-                <button type="submit" id="cancel" class="form-control btn btn-primary">Cancel</button>
-                <button type="submit" id="startride" class="form-control btn btn-primary">Start Ride</button>
-            <% }else if(flag == 4){ %>
-                <button type="submit" id="startride" class="form-control btn btn-primary">Start Ride</button>                   
+                </div>
 
+                <div class="d-none" id="flag3">
+                    <button type="submit" id="cancel" class="form-control btn btn-primary">Cancel</button>
+                    <button type="submit" id="startride" onclick="start()" class="form-control btn btn-primary">Start Ride</button>
+                </div>
+                
+                <div class="d-none" id="flag4">
+                    <button type="submit" id="startride" onclick="start()" class="form-control btn btn-primary">Start Ride</button>    
+                </div>
+                <button type="submit" id="endride" onclick="check()" class="d-none form-control btn btn-primary">End Ride</button>    
+                
+            <% if(flag == 1){ %>
+                <script type="text/javascript">
+                    document.getElementById('flag1').classList.remove('d-none');
+                </script>
+            <% }else if(flag == 2){ %>
+                <script type="text/javascript">
+                    document.getElementById('flag2').classList.remove('d-none');
+                </script>
+            <% }else if(flag == 3){ %>
+                <script type="text/javascript">
+                    document.getElementById('flag3').classList.remove('d-none');
+                </script>
+                
+            <% }else if(flag == 4){ %>                   
+                <script type="text/javascript">
+                    document.getElementById('flag4').classList.remove('d-none');
+                </script>
             <% } %>
+                
+                
             </div>
 
 
@@ -210,13 +174,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="../public/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="../public/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="../public/js/demo/chart-area-demo.js"></script>
-    <script src="../public/js/demo/chart-pie-demo.js"></script>
     <script src="../public/js/driver.js"></script>
 
 </body>

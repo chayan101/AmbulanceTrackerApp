@@ -35,7 +35,7 @@ exports.confirmlogin = async (req,res) =>{
         }else{
 
           const match = await bcrypt.compare(req.body.password, result[0].password);
-          console.log(match)
+          // console.log(match)
           if(match){
             res.cookie('username', values[0]);
             res.cookie('role', role);
@@ -45,22 +45,25 @@ exports.confirmlogin = async (req,res) =>{
               var driverMob = "9521420803";
   	          res.render("student.ejs",{flag: checkBookride()?0:1, mobile: driverMob});
             }else if (role === "driver") {
-              console.log(1);
+              // console.log(1);
               var sql2 = "Select * from pendingrides limit 1";
               try{
               await con.query(sql2, (err, result2)=>{
-                console.log(2);
+                // console.log(2);
                 if(err){
                    console.log(err);
                    res.sendStatus(500);
                  }
                 else if(!checkBookride() && result2.length === 0){
-                  console.log(3);
+                  // console.log(3);
                   res.status(200).render("driver", {flag:1});
                 }
                 else{
-                  console.log(4);
-                  res.status(200).render("driver",{flag:4});
+                  // console.log(4);
+                  res.status(200).render("driver",{flag:4,fname: '0hello',
+      rollnumber: '0hello',
+      hostel: '0hello',
+      mobile: '0hello'});
                 }
               });
             }catch(error){

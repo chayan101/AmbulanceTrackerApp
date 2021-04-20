@@ -15,7 +15,7 @@ var bodyParser = require("body-parser");
 var urlencodedparser = bodyParser.urlencoded({extended: false});
 const app = express();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 
 // using static files and other stuffs
