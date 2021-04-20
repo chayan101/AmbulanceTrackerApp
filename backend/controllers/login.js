@@ -2,6 +2,7 @@ const con = require('../functions/dbConnection.js');
 var mysql = require('mysql');
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
+const {checkBookride} = require("../functions/functions");
 
 exports.login = (req,res) =>{
   res.render('login');
@@ -41,9 +42,31 @@ exports.confirmlogin = async (req,res) =>{
             if(role === "authority"){
               res.redirect("auth");
             }else if(role === "student"){
-              res.redirect("student");
+              var driverMob = "9521420803";
+  	          res.render("student.ejs",{flag: checkBookride()?0:1, mobile: driverMob});
             }else if (role === "driver") {
-              res.redirect("driver");
+              console.log(1);
+              var sql2 = "Select * from pendingrides limit 1";
+              try{
+              await con.query(sql2, (err, result2)=>{
+                console.log(2);
+                if(err){
+                   console.log(err);
+                   res.sendStatus(500);
+                 }
+                else if(!checkBookride() && result2.length === 0){
+                  console.log(3);
+                  res.status(200).render("driver", {flag:1});
+                }
+                else{
+                  console.log(4);
+                  res.status(200).render("driver",{flag:4});
+                }
+              });
+            }catch(error){
+              console.log(error);
+              res.sendStatus(500);
+            }
             }else{
               res.redirect("/admin/registerAuth");
             }
