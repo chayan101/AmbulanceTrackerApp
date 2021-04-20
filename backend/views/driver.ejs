@@ -48,17 +48,6 @@
                         </div>
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
-
-
-                        <!-- <div class="topbar-divider d-none d-sm-block"></div> -->
-
-
-                                <!-- <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a> -->
-
                                 <div class="topbar-divider d-none d-sm-block"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -89,7 +78,7 @@
                         <td><%= rollnumber %></td>
                         <td><%= mobile %></td>
                         <td><li class="nav-item active">
-                                <a class="" href="tel:<%= mobile %>">
+                                <a class="" onclick="call()" href="tel:<%= mobile %>">
                                 <i class="fas fa-fw fa-phone" aria-hidden="true"></i>
                                 <span>Call</span>
                             </a>
@@ -100,7 +89,7 @@
                 </div>
 
                 <div class="d-none" id="flag3">
-                    <button type="submit" id="cancel" class="form-control btn btn-primary">Cancel</button>
+                    <button type="submit" onclick="check()" id="cancel" class="form-control btn btn-primary">Cancel</button>
                     <button type="submit" id="startride" onclick="start()" class="form-control btn btn-primary">Start Ride</button>
                 </div>
                 

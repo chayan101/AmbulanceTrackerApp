@@ -51,6 +51,11 @@ function ride()
   document.getElementById("endride").classList.remove("d-none");
 }
 
+function call(){
+  document.getElementById("flag2").classList.add("d-none");
+  document.getElementById("flag3").classList.remove("d-none"); 
+}
+
 function changeFlag(){
   socket.emit('setflag',false);
 }
