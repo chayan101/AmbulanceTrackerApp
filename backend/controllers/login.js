@@ -56,14 +56,25 @@ exports.confirmlogin = async (req,res) =>{
                  }
                 else if(!checkBookride() && result2.length === 0){
                   // console.log(3);
-                  res.status(200).render("driver", {flag:1});
-                }
+                  res.status(200).render("driver", {flag:1,
+                    fname: '0hello',
+                    rollnumber: '0hello',
+                    hostel: '0hello',
+                    mobile: '0hello'});
+                }else if(!checkBookride() && result2.length != 0){
+    							res.status(200).render("driver",{flag:2,
+                    fname: result2[0].fname,
+                    rollnumber: result2[0].rollnumber,
+                    hostel: result2[0].hostel,
+                    mobile: result2[0].mobile});
+    						}
                 else{
                   // console.log(4);
-                  res.status(200).render("driver",{flag:4,fname: '0hello',
-      rollnumber: '0hello',
-      hostel: '0hello',
-      mobile: '0hello'});
+                  res.status(200).render("driver",{flag:4,
+                    fname: '0hello',
+                    rollnumber: '0hello',
+                    hostel: '0hello',
+                    mobile: '0hello'});
                 }
               });
             }catch(error){
