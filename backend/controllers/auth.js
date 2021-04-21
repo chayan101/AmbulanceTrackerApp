@@ -21,7 +21,7 @@ exports.alogin = async (req,res) =>{
           }else{
             console.log("hello");
             var sql2 = "Select * from record";
-             con.query(sql2, function (err, result2, fields)
+            con.query(sql2, function (err, result2, fields)
             {
               if (err){
                 throw err;
@@ -30,7 +30,6 @@ exports.alogin = async (req,res) =>{
               res.render("auth", {result: JSON.parse(JSON.stringify(result2))});//converting it into an array of objects
 
             });
-            res.render("auth");
           }
       });
       }else{

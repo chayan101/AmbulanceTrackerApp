@@ -24,7 +24,7 @@ var startSendingCoordinates;
 
 function start(){
   document.getElementById("flag4").classList.add("d-none");
-
+   document.getElementById('flag1').classList.add('d-none');
   document.getElementById("flag3").classList.add("d-none");
   document.getElementById("endride").classList.remove("d-none");
 
@@ -71,9 +71,10 @@ function call(){
   document.getElementById("flag3").classList.remove("d-none");
 }
 
-function changeFlag(){
+document.getElementById('endride').addEventListener('click',()=>{
+  alert("kjdcnsd");
   socket.emit('setflag',false);
-}
+});
 
 //listening for "book" event
 socket.on("book",()=>{

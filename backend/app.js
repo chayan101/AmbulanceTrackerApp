@@ -48,16 +48,32 @@ io.on('connection' , function(socket){
 
   socket.on('setflag', function(data){
       var flag = alterFlag(data);
-    // console.log(data);
+    console.log(flag);
     // //io.sockets refers to all the sockets connected to the server
     // io.sockets.emit('chat', data);
     // io.sockets.emit('clear');
   });
+  
+  //Getting coordinates while ride in progress
   socket.on('rideInProgress',function(data){
-    console.log(data);
-    startLatLng(data);
-    console.log("Location: " + getLocation());
-    // socket.emit("getLatLng",getLocation());
+    if(data != null){
+      startLatLng(data);    
+      //emitting to authority
+      socket.broadcast.emit('rideInProgress',data);
+      console.log("Location: " + getLocation());
+    }
+
+    
+  });
+
+  // Getting end coordinates on end ride
+  socket.on("endride",function(data){
+    if(data != null){
+      endLatLng(data);
+      socket.broadcast.emit('endride',data);
+      console.log("end coord" + data);
+    }
+    
   });
 
   //when student books a ride
@@ -66,10 +82,6 @@ io.on('connection' , function(socket){
       socket.broadcast.emit("book");
   });
 
-  socket.on("endride",function(data){
-    endLatLng(data);
-    console.log("end coord" + data);
-  });
 });
 
 

@@ -28,5 +28,6 @@ exports.slogin = (req,res) =>{
 
 
 exports.checkavail = (req,res) =>{
+	// console.log(checkBookride())
   res.render("student",{flag: checkBookride()?0:1, mobile: driverMob})
 }

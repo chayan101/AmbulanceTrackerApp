@@ -16,7 +16,6 @@ exports.hashPassword = async (password) => {
 
 
 exports.startLatLng = (data)=>{
-  console.log(data);
   startLat = data[0];
   startLng = data[1];
 };
@@ -32,7 +31,7 @@ exports.getLocation = ()=>{
 
 exports.alterFlag = (value)=>{
   bookride = value;
-  console.log(bookride);
+  console.log("function" + bookride);
   return bookride;
 };
 

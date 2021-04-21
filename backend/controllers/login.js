@@ -40,7 +40,7 @@ exports.confirmlogin = async (req,res) =>{
             res.cookie('username', values[0]);
             res.cookie('role', role);
             if(role === "authority"){
-              res.redirect("auth");
+              res.redirect("/auth/");
             }else if(role === "student"){
               var driverMob = "9521420803";
   	          res.redirect("/student");
