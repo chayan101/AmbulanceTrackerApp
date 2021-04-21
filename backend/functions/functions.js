@@ -27,7 +27,7 @@ exports.endLatLng = (data)=>{
 }
 
 exports.getLocation = ()=>{
-  return [Lat,Lng];
+  return [startLat,startLng];
 }
 
 exports.alterFlag = (value)=>{

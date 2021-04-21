@@ -55,7 +55,7 @@ io.on('connection' , function(socket){
   });
   socket.on('rideInProgress',function(data){
     console.log(data);
-    LatLng(data);
+    startLatLng(data);
     console.log("Location: " + getLocation());
     // socket.emit("getLatLng",getLocation());
   });
