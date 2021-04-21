@@ -9,6 +9,12 @@ book.addEventListener("click", ()=>{
    document.getElementById("flag1").classList.add('d-none');
 });
 
+document.getElementById('home').addEventListener('click', ()=>{
+	if(socket){
+		socket.close();
+		}
+});
+
 document.getElementById("booklater").addEventListener("click", ()=>{
 	document.getElementById("bookform").classList.remove('d-none');
 	document.getElementById("flag0").classList.add('d-none');

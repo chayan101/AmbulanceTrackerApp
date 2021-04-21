@@ -38,7 +38,6 @@ var server = app.listen(port, () => {
 })
 
 
-
 //socket.io
 
 var io = socket(server);
@@ -66,12 +65,6 @@ io.on('connection' , function(socket){
       var flag = alterFlag(true);
       socket.broadcast.emit("book");
   });
-
-
-  // socket.on('typing' , (data)=>{
-  //   //socket is the socket connected at the moment && broadcast means sending msg to every other socket
-  //   socket.broadcast.emit('typing', data);
-  // });
 });
 
 

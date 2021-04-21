@@ -20,7 +20,16 @@ exports.alogin = async (req,res) =>{
             res.redirect("/login");
           }else{
             console.log("hello");
-            // console.log(req.cookies.role === undefined);
+            var sql2 = "Select * from record";
+             con.query(sql2, function (err, result2, fields)
+            {
+              if (err){
+                throw err;
+              }
+              //Query result is array of RowDataPackets instead of array of objects
+              res.render("auth", {result: JSON.parse(JSON.stringify(result2))});//converting it into an array of objects
+
+            });
             res.render("auth");
           }
       });

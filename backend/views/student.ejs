@@ -58,6 +58,15 @@
                     </ul>
 
                 </nav>
+                <form id="home" class=" d-none container mt-3" action="/student/" method="get">
+                        <button type="submit" class="form-control btn btn-primary">Home</button>
+                </form>
+                <div id="checkavail">
+                    <form class=" container mt-3" action="/student/checkavail" method="get">
+                        <button type="submit" class="form-control btn btn-primary">Check Availability</button>
+                    </form>
+                </div>
+                 
                 <!-- End of Topbar -->
                 <div class="container mt-3 d-none" id="flag0">
                     <div>Ambulance is not Available at the moment</div>
@@ -81,11 +90,15 @@
                     <% if(flag == 0){ %>
                         <script type="text/javascript">
                            document.getElementById('flag0').classList.remove('d-none');
+                           document.getElementById('checkavail').classList.add('d-none');
+                           document.getElementById('home').classList.remove('d-none');
                         </script>        
                         
-                    <% }else{ %>
+                    <% }else if(flag == 1){ %>
                         <script type="text/javascript">
                            document.getElementById('flag1').classList.remove('d-none');
+                           document.getElementById('checkavail').classList.add('d-none');
+                           document.getElementById('home').classList.remove('d-none');
                         </script>   
                     <% } %>
                  
