@@ -47,7 +47,6 @@ function sendCoordinates(){
       }
     });
   socket.emit("rideInProgress" , coordinates);
-  alert("send");
 };
 
 function check()
