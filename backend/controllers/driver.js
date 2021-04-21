@@ -8,6 +8,7 @@ exports.pending = async (req, res) => {
 		// var ridePending = await getPendingRides();
 		var sql2 = "Select rollnumber from pendingrides limit 1";
 		await con.query(sql2, async (err, result2)=>{
+			
 			if(result2.length == 0){
 				res.render("driver",{flag: 1,fname: '0hello',
 								rollnumber: '0hello',
@@ -15,6 +16,15 @@ exports.pending = async (req, res) => {
 								mobile: '0hello'});
 			}else
 			{
+				
+				var sqlinsert = "insert into record(rollnumber, time, distance, driverid) values (" + result2[0].rollnumber + ",'" + new Date().getTime() + "'," + 10+ "," +2  + ");";
+				
+				await con.query(sqlinsert, (err, resultinsert)=>{
+					if(err){
+						throw err;
+					}
+				});
+
 				var sql3 = "delete from pendingrides where rollnumber = "+ result2[0].rollnumber;
 				await con.query(sql3, (err, result3)=>{
 					if(err){
