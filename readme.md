@@ -15,7 +15,7 @@ And this can be implemented on a larger scale as well. We can build such an appl
 The Ambulance Tracking  System aims to give the student a hassle-free experience of using the ambulance when in need. There are obviously many advantages of this system to the student as well as the teacher and the associated  educational institution. The system after certain analysis contains 3 segments - Students, Authorities and Driver. Each segment will have a different interface and different features accordingly.  
 </p>
 <br>
-<p> Contributions </p>
+<p> CONTRIBUTORS :</p>
 <br>
 <p>
 Atul Prakash  -  Created the basic structure and also worked on the styling of the Frontend of the project(i.e. User Interface). Did the Testing of the project and also made the project reports and other related documents.
