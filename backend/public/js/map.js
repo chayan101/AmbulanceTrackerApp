@@ -1,5 +1,5 @@
 let map;
-var latitude = 26.0813094, longitude = 91.5619965;
+var latitude = 26.082301516170155, longitude = 91.55944356559085;
 var socket = io.connect('http://localhost:3000');
 alert(socket);
 socket.on('rideInProgress',function(data){

@@ -72,7 +72,6 @@ function call(){
 }
 
 document.getElementById('endride').addEventListener('click',()=>{
-  alert("kjdcnsd");
   socket.emit('setflag',false);
 });
 
