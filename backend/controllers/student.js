@@ -20,7 +20,8 @@ exports.slogin = (req,res) =>{
            //  rollnumber = req.body.rollnumber;
            //  hostel = req.body.hostel;
 	          // console.log(req.cookies.role === undefined);
-	          res.render("student.ejs",{flag: checkBookride()?1:0, mobile: "9521420803"});//student home page;
+            var driverMob = "9521420803";
+	          res.render("student.ejs",{flag: checkBookride()?1:0, mobile: driverMob});//student home page;
 	        }
 	    });
   	}
