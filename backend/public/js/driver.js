@@ -1,9 +1,6 @@
 var socket = io.connect('http://localhost:3000');
 var coordinates;
 var startSendingCoordinates;
-function getLocation(){
-
-}
 
 // function fetchdata(){
 //     $.ajax({
@@ -55,6 +52,7 @@ function sendCoordinates(){
 
 function check()
 {
+  socket.emit("endride",coordinates);
   location.reload();
 
   //stop sending sendingcoordinates

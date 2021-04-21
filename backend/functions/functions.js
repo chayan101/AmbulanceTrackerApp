@@ -2,7 +2,8 @@ const bcrypt = require('bcrypt');
 var bookride = false;
 var result2 =  null;
 const con = require('../functions/dbConnection')
-var Lat = null ,Lng = null;
+var startLat = null ,startLng = null;
+var endLat = null, endLng = null;
 
 exports.hashPassword = async (password) => {
   try{
@@ -14,11 +15,16 @@ exports.hashPassword = async (password) => {
 };
 
 
-exports.LatLng = (data)=>{
+exports.startLatLng = (data)=>{
   console.log(data);
-  // Lat = data[0];
-  // Lng = data[0];
+  startLat = data[0];
+  startLng = data[1];
 };
+
+exports.endLatLng = (data)=>{
+  endLat = data[0];
+  endLng = data[1];
+}
 
 exports.getLocation = ()=>{
   return [Lat,Lng];

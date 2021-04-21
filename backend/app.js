@@ -7,7 +7,7 @@ const studentRoutes = require('./routes/student');
 const driverRoutes = require('./routes/driver');
 const loginRoutes = require('./routes/login');
 const adminRoutes = require("./routes/admin");
-const {alterFlag, LatLng, getLocation} = require("./functions/functions");
+const {alterFlag, startLatLng, endLatLng, getLocation} = require("./functions/functions");
 var socket = require("socket.io");
 
 
@@ -58,13 +58,17 @@ io.on('connection' , function(socket){
     LatLng(data);
     console.log("Location: " + getLocation());
     // socket.emit("getLatLng",getLocation());
-      
   });
 
   //when student books a ride
   socket.on("book", ()=>{
       var flag = alterFlag(true);
       socket.broadcast.emit("book");
+  });
+
+  socket.on("endride",function(data){
+    endLatLng(data);
+    console.log("end coord" + data);
   });
 });
 
