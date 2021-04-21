@@ -1,15 +1,16 @@
 let map;
-var lat = 26.0813094, lng = 91.5619965;
+var latitude = 26.0813094, longitude = 91.5619965;
 var socket = io.connect('http://localhost:3000');
 alert(socket);
 socket.on('rideInProgress',function(data){
-	lat = data[0];
-	lng = data[1];
-	alert(lat + " " + lng);
+	latitude = data[0];
+	longitude = data[1];
+	initMap();
+	alert(latitude + " " + longitude);
 })
 
 function initMap() {
-	var coord = { lat: lat, lng: lng };
+	var coord = { lat: latitude, lng: longitude };
 	const map = new google.maps.Map(document.getElementById("map"), {
 	  zoom: 18,
 	  center: coord,
