@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Authority-Dashboard</title>
+    <title>Records</title>
 
     <!-- Custom fonts for this template-->
     <link href="../public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -68,13 +68,9 @@
                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                     <span>Track</span></a>
             </li>
+
             <hr class="sidebar-divider">
-            <!-- Nav Item - Records -->
-            <li class="nav-item">
-                <a class="nav-link" href="/auth/records">
-                    <i class="fa fa-history" aria-hidden="true"></i>
-                    <span>Records</span></a>
-            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -109,16 +105,7 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                       
-
-                        <!-- <div class="topbar-divider d-none d-sm-block"></div> -->
-
-                      
-                                <!-- <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a> -->
-                            
+                 
                                 <div class="topbar-divider d-none d-sm-block"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -129,6 +116,27 @@
 
                 </nav>
                 <!-- End of Topbar -->
+                <!-- table of records -->
+                <table style="width:100%">
+                      <tr>
+                        <th>TripId</th>
+                        <th>Roll Number</th>
+                        <th>Time</th>
+                        <th>Distance</th>
+                        <th>DriverId</th>
+
+                      </tr>
+                      <% for(var i = 0; i < result.length ; i++){ %>
+                      <tr>
+                        <td><%= result[i].tripid %></td>
+                        <td><%= result[i].rollnumber %></td>
+                        <td><%= result[i].time %></td>
+                        <td><%= result[i].distance %></td>
+                        <td><%= result[i].driverid %></td>
+                      </tr>
+                    <% }; %>
+                  </table>
+                  <!-- end of table of records -->
             </div>
             <!-- End of Main Content -->
 

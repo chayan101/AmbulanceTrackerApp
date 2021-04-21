@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const { check, validationResult} = require("express-validator");
-const {slogin, bookAmbulance, bookForLater} = require("../controllers/student");
+const {slogin,checkavail} = require("../controllers/student");
 
 
 // var sql = process.env.SELECT;
@@ -22,8 +22,6 @@ router.get("/logout",function(req,res){
 	res.redirect("/login");
 });
 
-router.get("/bookavail", bookAmbulance);
-router.post("/booklater", bookForLater);
-
+router.get("/checkavail",checkavail);
 
 module.exports = router;

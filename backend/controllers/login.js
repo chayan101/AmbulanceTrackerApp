@@ -43,7 +43,7 @@ exports.confirmlogin = async (req,res) =>{
               res.redirect("auth");
             }else if(role === "student"){
               var driverMob = "9521420803";
-  	          res.render("student.ejs",{flag: checkBookride()?0:1, mobile: driverMob});
+  	          res.redirect("/student");
             }else if (role === "driver") {
               // console.log(1);
               var sql2 = "Select * from pendingrides limit 1";
