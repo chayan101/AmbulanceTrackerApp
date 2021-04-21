@@ -90,13 +90,18 @@
 
                 <div class="d-none" id="flag3">
                     <button type="submit" onclick="check()" id="cancel" class="form-control btn btn-primary">Cancel</button>
+                    <br>
+                    <hr>
                     <button type="submit" id="startride" onclick="start()" class="form-control btn btn-primary">Start Ride</button>
                 </div>
                 
                 <div class="d-none" id="flag4">
                     <button type="submit" id="startride" onclick="start()" class="form-control btn btn-primary">Start Ride</button>    
                 </div>
-                <button type="submit" id="endride" onclick="check()" class="d-none form-control btn btn-primary">End Ride</button>    
+                <form action="/driver/pending" class="endride" method="get">
+                    <button type="submit" id="endride" onclick="check()" class="d-none form-control btn btn-primary">End Ride</button>     
+                </form>
+                  
                 
             <% if(flag == 1){ %>
                 <script type="text/javascript">
@@ -148,7 +153,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/auth/logout">Logout</a>
+                    <a class="btn btn-primary" id="logout" href="/auth/logout">Logout</a>
                 </div>
             </div>
         </div>

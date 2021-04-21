@@ -15,8 +15,9 @@ exports.hashPassword = async (password) => {
 
 
 exports.LatLng = (data)=>{
-  Lat = data[0];
-  Lng = data[0];
+  console.log(data);
+  // Lat = data[0];
+  // Lng = data[0];
 };
 
 exports.getLocation = ()=>{
@@ -33,6 +34,3 @@ exports.checkBookride = ()=>{
   return bookride;
 };
 
-exports.getPendingRides = async () => {
-	
-};

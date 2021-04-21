@@ -1,17 +1,9 @@
 var socket = io.connect('http://localhost:3000');
 var coordinates;
 var startSendingCoordinates;
-// function getLocation(){
-//           navigator.geolocation.getCurrentPosition(function (pos) {
-//               var lat = pos.coords.latitude;
-//               var lng = pos.coords.longitude;
-//               if (lat == null) {
-//                   alert("GPS not activated!");
-//               } else {
-//                   alert("Latitude: "+ lat + " , Longitude: " + lng );
-//               }
-//           });
-// }
+function getLocation(){
+
+}
 
 // function fetchdata(){
 //     $.ajax({
@@ -39,15 +31,26 @@ function start(){
   document.getElementById("flag3").classList.add("d-none");
   document.getElementById("endride").classList.remove("d-none");
 
-  //fetch coordinated from GPS device
-  coordinates = ;
-
   //send coordinates on Start endride
+  // alert('hola');
   startSendingCoordinates = setInterval(sendCoordinates, 10000);
 }
 
 function sendCoordinates(){
+    //fetch coordinated from GPS device
+  navigator.geolocation.getCurrentPosition(function (pos) {
+      var lat = pos.coords.latitude;
+      var lng = pos.coords.longitude;
+
+      if (lat == null) {
+        alert("GPS not activated!");
+      } else {
+        // alert("Latitude: "+ lat + " , Longitude: " + lng );
+        coordinates = [lat,lng];
+      }
+    });
   socket.emit("rideInProgress" , coordinates);
+  alert("send");
 };
 
 function check()
@@ -77,21 +80,14 @@ function changeFlag(){
 //listening for "book" event
 socket.on("book",()=>{
   //JavaScript to render the startride button(flag 4)
-
+  document.getElementById('flag4').classList.remove('d-none');
 });
 
 
 
-// $(document).ready(function(){
-//  setTimeout(fetchdata,1000);
-// });
-
-
- // getLocation();
-document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {
-  navigator.geolocation.getCurrentPosition(onSuccess, onError);
-}
-function onSuccess(position) {
-  alert('Latitude: '+ position.coords.latitude +'Longitude: '+ position.coords.longitude);
-}
+//closing the socket
+document.getElementById('logout').addEventListener('click',()=>{
+  if(socket){
+    socket.close();
+  }
+});

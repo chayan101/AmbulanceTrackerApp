@@ -53,11 +53,12 @@ io.on('connection' , function(socket){
     // io.sockets.emit('chat', data);
     // io.sockets.emit('clear');
   });
-  socket.on('LatandLang',function(data){
+  socket.on('rideInProgress',function(data){
+    console.log(data);
     LatLng(data);
     console.log("Location: " + getLocation());
     // socket.emit("getLatLng",getLocation());
-      // console.log(data);
+      
   });
 
   //when student books a ride
